@@ -23,7 +23,8 @@ export default defineConfig({
       {
         text: 'Components',
         items: [
-          { text: 'File Upload', link: '/file-upload' },
+          { text: 'Introduction', link: '/components/introduction' },
+          { text: 'File Upload', link: '/components/file-upload' },
         ]
       }
     ],

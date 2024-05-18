@@ -1,5 +1,6 @@
 # Sample workflow for building and deploying a VitePress site to GitHub Pages
-name: Deploy VitePress site to GitHub Pages
+#
+name: Deploy VitePress site to Pages
 
 on:
   # Runs on pushes targeting the `main` branch. Change this to `master` if you're
@@ -48,7 +49,7 @@ jobs:
           path: docs/.vitepress/dist
 
   # Deployment job
-  deploy:
+  Deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

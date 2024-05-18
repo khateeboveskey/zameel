@@ -19,6 +19,12 @@ export default defineConfig({
           { text: 'Runtime API Examples', link: '/api-examples' },
           { text: 'Contribution', link: '/CONTRIBUTING' }
         ]
+      },
+      {
+        text: 'Components',
+        items: [
+          { text: 'File Upload', link: '/file-upload' },
+        ]
       }
     ],
 

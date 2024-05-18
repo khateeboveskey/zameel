@@ -48,7 +48,7 @@ jobs:
           path: docs/.vitepress/dist
 
   # Deployment job
-  Deploy:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -1,0 +1,32 @@
+name: Prettier Format
+
+# This action works with pull requests and pushes
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+jobs:
+    Format:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  # Make sure the actual branch is checked out when running on pull requests
+                  ref: ${{ github.head_ref }}
+
+            - name: Install Dependencies
+              run: npm install -D @vue/eslint-config-prettier prettier prettier-plugin-tailwindcss
+
+            - name: Format
+              run: npx prettier --write .
+
+            - name: Commit & Push
+              uses: stefanzweifel/git-auto-commit-action@v4
+              with:
+                  commit_message: 'style: format (ci-made)'
+                  skip_fetch: true

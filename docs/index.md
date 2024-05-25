@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /introduction
+      link: /setup
     - theme: alt
       text: Contributing Guide
       link: /CONTRIBUTING
@@ -17,11 +17,11 @@ hero:
 features:
   - title: Open Source
     icon: 🔓
-    details: Fully open source, you can use it, improve it, or make your own from it.
+    details: Zameel is fully open source, you can use it, improve it, or make your own from it.
   - title: Cross Platform
     icon: 📱
-    details: Available for Android and iOS with the power of Capacitor.
+    details: Zameel is available for Android and iOS with the power of Capacitor.
   - title: User-centered
     icon: 👩🏻‍🎓
-    details: Made by students, for students, solving their studying-related problems!
+    details: Zameel is made by students, for students, solving their studying-related problems!
 ---

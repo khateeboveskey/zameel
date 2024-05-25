@@ -39,4 +39,4 @@ npm run dev
 
 This will start the Vite development server and open the app in your default browser.
 
-For more information, [read the docs](khateeboveskey.github.io/zameel).
+For more information, [read the docs](https://khateeboveskey.github.io/zameel).

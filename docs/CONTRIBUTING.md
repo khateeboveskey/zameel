@@ -45,7 +45,7 @@ use `@apply` at-rule to apply classes to selected element.
 
 ```css
 .custom-scrollbar::-webkit-scrollbar {
-    @apply hidden;
+  @apply hidden;
 }
 ```
 
@@ -57,7 +57,7 @@ If you are forced to write in `index.css`, use `@layer` at-rule to group rules.
 
 ```css
 .custom-scrollbar::-webkit-scrollbar {
-    @apply hidden;
+  @apply hidden;
 }
 ```
 
@@ -65,9 +65,9 @@ If you are forced to write in `index.css`, use `@layer` at-rule to group rules.
 
 ```css {1,5}
 @layer base {
-    .custom-scrollbar::-webkit-scrollbar {
-        @apply hidden;
-    }
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply hidden;
+  }
 }
 ```
 

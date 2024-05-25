@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Zameel"
-  text: "Documentation"
+  name: 'Zameel'
+  text: 'Documentation'
   tagline: Your never-be-absent classmate
   actions:
     - theme: brand

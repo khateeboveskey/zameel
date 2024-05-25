@@ -1,39 +1,42 @@
-# zameel
+# Zameel
 
-This template should help get you started developing with Vue 3 in Vite.
+Your never-be-absent classmate.
 
-## Recommended IDE Setup
+## Prerequisites
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Node.js 18.x or higher.
+- NPM 8.x or higher.
 
-## Type Support for `.vue` Imports in TS
+## Setup
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+### 1. Fork the Repository
 
-## Customize configuration
+Fork the repository to your own account.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### 2. Clone the Repository
 
-## Project Setup
+Clone the repository to your local machine:
+
+```sh
+git clone https://github.com/<your-username>/zameel.git
+```
+
+### 3. Install Dependencies
+
+Install the dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 4. Start the Development Server
+
+Start the development server:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+This will start the Vite development server and open the app in your default browser.
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+For more information, [read the docs](khateeboveskey.github.io/zameel).

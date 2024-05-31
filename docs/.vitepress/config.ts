@@ -7,20 +7,30 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Setup', link: '/setup' },
+      { text: 'Guide', link: '/guide/setup' },
+      { text: 'API Reference', link: '/api-reference/create-comp' },
     ],
     outline: 'deep',
-    sidebar: [
-      {
-        text: 'Getting Started',
-        items: [
-          { text: 'Introduction', link: '/introduction' },
-          { text: 'Setup', link: '/setup' },
-          { text: 'Contribution', link: '/CONTRIBUTING' },
-        ],
-      },
-    ],
+    sidebar: {
+      '/guide/': [
+        {
+          text: 'Getting Started',
+          collapsed: true,
+          items: [
+            { text: 'Introduction', link: '/guide/introduction' },
+            { text: 'Setup', link: '/guide/setup' },
+            { text: 'Contribution', link: '/guide/CONTRIBUTING' },
+          ],
+        },
+      ],
+      '/api-reference/': [
+        {
+          text: 'Scripts',
+          collapsed: true,
+          items: [{ text: 'Create Component', link: '/api-reference/create-comp' }],
+        },
+      ],
+    },
     socialLinks: [{ icon: 'github', link: 'https://github.com/khateeboveskey/zameel' }],
   },
   base: '/zameel/',

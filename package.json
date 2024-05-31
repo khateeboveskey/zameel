@@ -19,9 +19,6 @@
     "create:view": "node scripts/create-view.js"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "commander": "^12.1.0",
-    "fs": "^0.0.1-security",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
@@ -37,8 +34,11 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.19",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "fs": "^0.0.1-security",
     "husky": "^9.0.11",
     "npm-run-all2": "^6.1.2",
     "postcss": "^8.4.38",

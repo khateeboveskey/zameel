@@ -1,5 +1,10 @@
 # Setup
 
+## Prerequisites
+
+- Node.js 18.x or higher.
+- NPM 8.x or higher.
+
 ## 1. Fork the Repository
 
 Fork the [repository on GitHub](https://github.com/khateeboveskey/zameel) to your own account.

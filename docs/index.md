@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /setup
+      link: /guide/setup
     - theme: alt
       text: Contributing Guide
-      link: /CONTRIBUTING
+      link: /guide/CONTRIBUTING
 
 features:
   - title: Open Source

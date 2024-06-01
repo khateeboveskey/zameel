@@ -2,23 +2,23 @@
 
 This script is used to create a new Vue component.
 
-### Usage
+## Usage
 
 ```sh
 npm run create:comp <name>
 ```
 
-### Arguments
+## Arguments
 
 - `name` - The name of the component to create.
 
-### Options
+## Options
 
 - `-t, --typescript` - Add TypeScript to the `<script>` tag.
 - `-o, --optionapi` - Use Option API instead of Composition API.
 - `-d, --nodiv` - Don't add a root `<div>` tag.
 
-### Example
+## Example
 
 ```sh
 npm run create:comp MyComponent

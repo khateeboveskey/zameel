@@ -1,1 +1,0 @@
-# `create-comp.js`

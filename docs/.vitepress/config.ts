@@ -7,30 +7,32 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Guide', link: '/guide/setup' },
-      { text: 'API Reference', link: '/api-reference/create-comp' },
+      { text: 'Home', link: '/' },
+      { text: 'Setup', link: '/setup' },
+      { text: 'Contribution', link: '/CONTRIBUTING' },
     ],
     outline: 'deep',
-    sidebar: {
-      '/guide/': [
-        {
-          text: 'Getting Started',
-          collapsed: true,
-          items: [
-            { text: 'Introduction', link: '/guide/introduction' },
-            { text: 'Setup', link: '/guide/setup' },
-            { text: 'Contribution', link: '/guide/CONTRIBUTING' },
-          ],
-        },
-      ],
-      '/api-reference/': [
-        {
-          text: 'Scripts',
-          collapsed: true,
-          items: [{ text: 'Create Component', link: '/api-reference/create-comp' }],
-        },
-      ],
-    },
+    sidebar: [
+      {
+        text: 'Getting Started',
+        collapsed: true,
+        items: [
+          { text: 'Introduction', link: '/introduction' },
+          { text: 'Setup', link: '/setup' },
+          { text: 'Contribution', link: '/CONTRIBUTING' },
+        ],
+      },
+      {
+        text: 'Scripts',
+        collapsed: true,
+        items: [
+          { text: 'Introduction', link: '/scripts/introduction' },
+          { text: 'create-comp', link: '/scripts/create-comp' },
+          { text: 'create-view', link: '/scripts/create-view' },
+          { text: 'create-store', link: '/scripts/create-store' },
+        ],
+      },
+    ],
     socialLinks: [{ icon: 'github', link: 'https://github.com/khateeboveskey/zameel' }],
   },
   base: '/zameel/',

@@ -27,9 +27,9 @@ export default defineConfig({
         collapsed: true,
         items: [
           { text: 'Introduction', link: '/scripts/introduction' },
-          { text: 'create:comp', link: '/scripts/create-comp' },
-          { text: 'create:view', link: '/scripts/create-view' },
-          { text: 'create:store', link: '/scripts/create-store' },
+          { text: 'create-comp', link: '/scripts/create-comp' },
+          { text: 'create-view', link: '/scripts/create-view' },
+          { text: 'create-store', link: '/scripts/create-store' },
         ],
       },
     ],

@@ -19,7 +19,14 @@
     "create:view": "node scripts/create-view.js"
   },
   "dependencies": {
+    "@radix-icons/vue": "^1.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "pinia": "^2.1.7",
+    "radix-vue": "^1.8.3",
+    "shadcn-vue": "^0.10.5",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },

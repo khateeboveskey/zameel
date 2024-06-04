@@ -54,7 +54,7 @@ program.action((name) => {
   }
 
   const viewName = name.charAt(0).toUpperCase() + name.slice(1);
-  const filePath = path.join('views', `${viewName}View.vue`);
+  const filePath = path.join('./src/views', `${viewName}View.vue`);
   const content = viewTemplate(isOptionAPI, isTypescript, noRootDiv);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });

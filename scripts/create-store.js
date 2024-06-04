@@ -23,7 +23,7 @@ program.argument('<name>', 'name of the store');
 
 program.action((name) => {
   const storeName = name.charAt(0).toUpperCase() + name.slice(1);
-  const filePath = path.join('stores', `use${storeName}.js`);
+  const filePath = path.join('./src/stores', `use${storeName}.js`);
   const content = storeTemplate(name);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });

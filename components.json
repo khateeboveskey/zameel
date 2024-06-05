@@ -12,7 +12,7 @@
   },
   "framework": "vite",
   "aliases": {
-    "components": "@/components/common",
+    "components": "@/components",
     "utils": "@/utils"
   }
 }

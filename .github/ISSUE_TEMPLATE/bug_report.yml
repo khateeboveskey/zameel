@@ -22,6 +22,7 @@ body:
     id: other
     attributes:
       label: Other Bug Type
+      placeholder: e.g. Compatibility
       description: "If you choose \"Other\" pleaser write the type, this is extremely helpful, if an other type has been submitted several times, it will be added to the types list."
 
   - type: input
@@ -29,14 +30,14 @@ body:
     attributes:
       label: Reproduction
       description: "How the issue is triggered?"
-      placeholder: E.g. Submitting new post form
+      placeholder: e.g. Submitting new post form
     validations:
       required: true
 
   - type: textarea
     id: steps
     attributes:
-      label: Steps to reproduce the bug, if it can be reproduced in more than one step.
+      label: Steps to reproduce the bug
       description: |
         1. Click on ...
         2. Check log

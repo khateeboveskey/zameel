@@ -16,7 +16,8 @@
     "docs:preview": "vitepress preview docs",
     "create:store": "node scripts/create-store.js",
     "create:comp": "node scripts/create-comp.js",
-    "create:view": "node scripts/create-view.js"
+    "create:view": "node scripts/create-view.js",
+    "create:model": "node scripts/create-model.js"
   },
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
@@ -51,6 +52,7 @@
     "postcss": "^8.4.38",
     "prettier": "^3.3.1",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "redaxios": "^0.5.1",
     "sass": "^1.77.4",
     "tailwindcss": "^3.4.3",
     "typescript": "~5.4.0",

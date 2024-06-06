@@ -1,0 +1,30 @@
+@import '../abstracts/variables';
+
+@each $size in $tailwind-spacing-values {
+  @each $key, $value in $tailwind-positioning-properties {
+    .#{$key}-#{$size} {
+      #{$key}: unset !important;
+      #{$value}: #{$size * 4}px !important;
+    }
+
+    .#{$value}-#{$size} {
+      #{$value}: unset !important;
+      #{$key}: #{$size * 4}px !important;
+    }
+  }
+
+  @each $key, $value in $tailwind-spacing-properties {
+    .#{$key}-#{$size} {
+      @apply #{$value}-#{$size};
+      @if $key == 'ml' {
+        margin-left: unset !important;
+      } @else if $key == 'mr' {
+        margin-right: unset !important;
+      } @else if $key == 'pr' {
+        padding-right: unset !important;
+      } @else if $key == 'pl' {
+        padding-left: unset !important;
+      }
+    }
+  }
+}

@@ -63,12 +63,27 @@ If you are forced to write in `index.css`, use `@layer` at-rule to group rules.
 
 ✔ Good
 
-```css {1,5}
+```css
 @layer base {
+  /* ... */
   .custom-scrollbar::-webkit-scrollbar {
     @apply hidden;
   }
 }
+```
+
+3. Prefer a direction-based class over a position-based class
+
+❌ Bad
+
+```css
+@apply ml-5 mr-2;
+```
+
+✔ Good
+
+```css
+@apply ms-5 me-2;
 ```
 
 ## Licence

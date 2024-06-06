@@ -3,7 +3,6 @@
   "style": "new-york",
   "typescript": true,
   "tsConfigPath": "./tsconfig.json",
-  "rtl": true,
   "tailwind": {
     "config": "tailwind.config.js",
     "css": "src/assets/index.css",

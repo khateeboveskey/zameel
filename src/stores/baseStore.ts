@@ -21,7 +21,7 @@ export const createBaseStore = (storeId: string, endpoint: string) => {
      *
      * @returns The fetched resource data.
      */
-    async function findAll(): Promise<any> {
+    async function all(): Promise<any> {
       return await request.get(endpoint);
     }
 
@@ -31,7 +31,7 @@ export const createBaseStore = (storeId: string, endpoint: string) => {
      * @param data - The data for the new resource.
      * @returns The created resource data.
      */
-    async function add(data?: JSON): Promise<any> {
+    async function create(data?: JSON): Promise<any> {
       return await request.post(endpoint, data);
     }
 
@@ -43,7 +43,7 @@ export const createBaseStore = (storeId: string, endpoint: string) => {
      * @returns The updated resource data.
      */
     async function update(id: string, data: JSON): Promise<any> {
-      return await request.put(`${endpoint}/${id}`, data);
+      return await request.put(`${endpoint}/${id}`, id, data);
     }
 
     /**
@@ -53,14 +53,14 @@ export const createBaseStore = (storeId: string, endpoint: string) => {
      * @returns The response data from the delete request.
      */
     async function remove(id: number): Promise<any> {
-      return await request.delete(`${endpoint}/${id}`, data);
+      return await request.delete(`${endpoint}/${id}`, id);
     }
 
     return {
       isFinished: request.isFinished,
       find,
-      findAll,
-      add,
+      all,
+      create,
       update,
       remove,
     };

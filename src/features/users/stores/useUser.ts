@@ -9,7 +9,7 @@ export const useUser = defineStore('user', () => {
 
   const login = async () => {
     // todo: fill that
-    localStorage.setItem('AUTH_TOKEN');
+    localStorage.setItem('AUTH_TOKEN', '');
     return await request.post('/login');
   };
 

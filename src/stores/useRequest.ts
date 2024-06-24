@@ -73,6 +73,8 @@ export const useRequest = defineStore('request', () => {
   /**
    * Sends a DELETE request to the specified endpoint with the provided ID.
    *
+   * Note: `delete` is a reserved word in TS.
+   *
    * @param endpoint - The URL endpoint to send the DELETE request to.
    * @param id - The ID of the resource to delete.
    * @returns The response data from the DELETE request.

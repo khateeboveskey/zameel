@@ -1,4 +1,3 @@
-// import axios from '@/plugins/axios';
 import { defineStore } from 'pinia';
 import { useRequest } from './useRequest';
 
@@ -49,6 +48,8 @@ export const createBaseStore = (storeId: string, endpoint: string) => {
     /**
      * Deletes a resource from the API endpoint by the given ID.
      *
+     * Note: `delete` is a reserved word in TS. 
+     *
      * @param id - The ID of the resource to delete.
      * @returns The response data from the delete request.
      */
@@ -62,7 +63,7 @@ export const createBaseStore = (storeId: string, endpoint: string) => {
       all,
       create,
       update,
-      remove,
+      delete: remove,
     };
   });
 };

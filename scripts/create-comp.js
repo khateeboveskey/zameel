@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { program } from 'commander';
 
-const compTemplate = (isOptionAPI, isTypescript, noRootDiv) =>
+const template = (isOptionAPI, noRootDiv) =>
   `<template>
 ${
   !noRootDiv
@@ -14,7 +14,7 @@ ${
 }
 </template>
 
-<script ${isOptionAPI ? '' : 'setup'}${isTypescript ? 'lang="ts"' : ''}>
+<script ${isOptionAPI ? '' : 'setup '}lang="ts">
 ${
   isOptionAPI
     ? `  export default {
@@ -30,22 +30,17 @@ ${
 `;
 
 program
-  .argument('<name>', 'name of the component')
-  .option('-t, --typescript', 'add TypeScript to the <script> tag')
+  .argument('<name>', `name of the component`)
   .option('-o, --optionapi', 'use Option API instead of Composition API')
-  .option('-d, --nodiv', "don't add a root <div> tag");
+  .option('-f, --feature <feature>', 'the feature folder to put the file in')
+  .option('-d, --no-div', "don't add a root <div> tag");
 
 program.action((name) => {
   const opts = program.opts();
 
   const isOptionAPI = opts.optionapi;
   if (isOptionAPI) {
-    console.log(chalk.bold(`⚙ Option API Component`));
-  }
-
-  const isTypescript = opts.typescript;
-  if (isTypescript) {
-    console.log(chalk.blue(`✔ TypeScript Added`));
+    console.log(chalk.bold(`⚙ Option API component`));
   }
 
   const noRootDiv = opts.nodiv;
@@ -53,14 +48,23 @@ program.action((name) => {
     console.log(chalk.bold(`⚙ No Root <div>`));
   }
 
-  const compName = name.charAt(0).toUpperCase() + name.slice(1);
-  const filePath = path.join('./src/components', `${compName}.vue`);
-  const content = compTemplate(isOptionAPI, isTypescript, noRootDiv);
+  const feature = opts.feature;
+  if (feature) {
+    console.log(chalk.bold(`✨ Put in ${feature} feature folder`));
+  }
+
+  // todo: make it capitalize()
+  const fileName = name.charAt(0).toUpperCase() + name.slice(1);
+  const filePath = path.join(
+    feature ? `./src/features/${feature}/components` : `./src/components`,
+    `${fileName}.vue`
+  );
+  const content = template(isOptionAPI, noRootDiv);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content);
 
-  console.log(chalk.green(`✔ ${compName}.vue component is created successfully.`));
+  console.log(chalk.green(`✔ ${fileName}.vue component is created successfully.`));
 });
 
 program.parse(process.argv);

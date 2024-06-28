@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { program } from 'commander';
 
-const viewTemplate = (isOptionAPI, isTypescript, noRootDiv) =>
+const viewTemplate = (isOptionAPI, noRootDiv) =>
   `<template>
 ${
   !noRootDiv
@@ -14,7 +14,7 @@ ${
 }
 </template>
 
-<script ${isOptionAPI ? '' : 'setup'}${isTypescript ? 'lang="ts"' : ''}>
+<script ${isOptionAPI ? '' : 'setup '}lang="ts">
 ${
   isOptionAPI
     ? `  export default {
@@ -31,7 +31,6 @@ ${
 
 program
   .argument('<name>', 'name of the view')
-  .option('-t, --typescript', 'add TypeScript to the <script> tag')
   .option('-o, --optionapi', 'use Option API instead of Composition API')
   .option('-d, --nodiv', "don't add a root <div> tag");
 
@@ -43,11 +42,6 @@ program.action((name) => {
     console.log(chalk.bold(`⚙ Option API View`));
   }
 
-  const isTypescript = opts.typescript;
-  if (isTypescript) {
-    console.log(chalk.blue(`✔ TypeScript Added`));
-  }
-
   const noRootDiv = opts.nodiv;
   if (noRootDiv) {
     console.log(chalk.bold(`⚙ No Root <div>`));
@@ -55,7 +49,7 @@ program.action((name) => {
 
   const viewName = name.charAt(0).toUpperCase() + name.slice(1);
   const filePath = path.join('./src/views', `${viewName}View.vue`);
-  const content = viewTemplate(isOptionAPI, isTypescript, noRootDiv);
+  const content = viewTemplate(isOptionAPI, noRootDiv);
 
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, content);

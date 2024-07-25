@@ -32,7 +32,7 @@ export default function User() {
         }}
       />
 
-      <H6>Some Tamagui components in action.</H6>
+      <H6>تجربة اللغة العربية لزميل</H6>
 
       <DialogDemo />
       <SelectDemo />

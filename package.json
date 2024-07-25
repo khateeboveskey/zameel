@@ -13,7 +13,6 @@
     "@tamagui/animations-react-native": "^1.89.17",
     "@tamagui/babel-plugin": "^1.89.17",
     "@tamagui/config": "^1.89.17",
-    "@tamagui/font-inter": "^1.89.17",
     "@tamagui/lucide-icons": "^1.89.17",
     "@tamagui/themes": "^1.89.17",
     "expo": "^51.0.22",

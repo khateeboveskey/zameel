@@ -4,17 +4,18 @@ import { Adapt, Fieldset, Label, Select, Sheet, YStack } from "tamagui";
 import { LinearGradient } from "tamagui/linear-gradient";
 
 export default function SelectDemo() {
-  const [val, setVal] = useState("apple");
+  const [val, setVal] = useState("تفاحة");
 
   return (
     <Fieldset>
-      <Label htmlFor="food">Select Demo</Label>
+      <Label htmlFor="food">تجربة الاختيار</Label>
       <Select
         id="food"
         value={val}
         onValueChange={setVal}
       >
         <Select.Trigger
+          flexDirection="row-reverse"
           id="food"
           iconAfter={ChevronDown}
         >
@@ -60,18 +61,19 @@ export default function SelectDemo() {
 
           <Select.Viewport minWidth={200}>
             <Select.Group>
-              <Select.Label>Fruits</Select.Label>
+              <Select.Label>الفواكه</Select.Label>
               {items.map((item, i) => {
                 return (
                   <Select.Item
                     index={i}
+                    flexDirection="row-reverse"
                     key={item.name}
                     value={item.name.toLowerCase()}
                   >
                     <Select.ItemText color="$color">
                       {item.name}
                     </Select.ItemText>
-                    <Select.ItemIndicator ml="auto">
+                    <Select.ItemIndicator mr="auto">
                       <Check size={16} />
                     </Select.ItemIndicator>
                   </Select.Item>
@@ -105,7 +107,7 @@ export default function SelectDemo() {
 }
 
 const items = [
-  { name: "Apple" },
+  { name: "تفاحة" },
   { name: "Pear" },
   { name: "Blackberry" },
   { name: "Peach" },

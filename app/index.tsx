@@ -1,9 +1,10 @@
 // @ts-nocheck
-import { Github, Twitter } from "@tamagui/lucide-icons";
+import { Github } from "@tamagui/lucide-icons";
 import { Link, useRouter } from "expo-router";
 import {
   Button,
   H1,
+  Image,
   ListItem,
   Paragraph,
   Separator,
@@ -20,19 +21,27 @@ export default function Home() {
   return (
     <MySafeAreaView>
       <MyStack>
-        <YStack maxWidth={600}>
-          <H1 textAlign="center">Welcome to Tamagui.</H1>
-          <Paragraph textAlign="center">
-            Here&apos;s a basic starter to show navigating from one screen to
-            another.
-          </Paragraph>
+        <YStack
+          maxWidth={600}
+          marginTop={"$12"}
+          space="$2.5"
+        >
+          <Image src={"../assets/icon.png"} />
+          <H1
+            py="$2"
+            h={"$6"}
+            textAlign="center"
+          >
+            أهلاً بك في زميل
+          </H1>
+          <Paragraph textAlign="center">نظام إدارة محتوى الطالب</Paragraph>
         </YStack>
 
         <YStack space="$2.5">
           <Button onPress={() => router.push("/users/testuser")}>
-            Go to user page
+            الملف الشخصي
           </Button>
-          <Button onPress={() => router.push("/tabs")}>Go to tabs page</Button>
+          <Button onPress={() => router.push("/tabs")}>التبويبات</Button>
         </YStack>
 
         <YStack space="$5">
@@ -44,41 +53,14 @@ export default function Home() {
             <YGroup.Item>
               <Link
                 asChild
-                href="https://twitter.com/natebirdman"
+                href="https://github.com/khateeboveskey/zameel"
                 target="_blank"
               >
                 <ListItem
-                  hoverTheme
-                  title="Nate"
-                  pressTheme
-                  icon={Twitter}
-                />
-              </Link>
-            </YGroup.Item>
-            <YGroup.Item>
-              <Link
-                asChild
-                href="https://github.com/tamagui/tamagui"
-                target="_blank"
-              >
-                <ListItem
+                  flexDirection="row-reverse"
                   hoverTheme
                   pressTheme
-                  title="Tamagui"
-                  icon={Github}
-                />
-              </Link>
-            </YGroup.Item>
-            <YGroup.Item>
-              <Link
-                asChild
-                href="https://github.com/ivopr/tamagui-expo"
-                target="_blank"
-              >
-                <ListItem
-                  hoverTheme
-                  pressTheme
-                  title="This Template"
+                  title="مستودع المشروع"
                   icon={Github}
                 />
               </Link>

@@ -18,8 +18,7 @@ export default function Layout() {
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
-    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
-    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf")
+    Alexandria: require("../assets/fonts/Alexandria-Regular.ttf")
   });
 
   useEffect(() => {

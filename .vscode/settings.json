@@ -4,10 +4,10 @@
 	},
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
 	"[typescript]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+		"editor.defaultFormatter": "vscode.typescript-language-features"
 	},
 	"[typescriptreact]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"typescript.preferences.importModuleSpecifier": "non-relative",
 	"files.exclude": {

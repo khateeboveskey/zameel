@@ -1,23 +1,10 @@
-// @ts-nocheck
-import { Github } from "@tamagui/lucide-icons";
-import { Link, useRouter } from "expo-router";
-import {
-  Button,
-  H1,
-  Image,
-  ListItem,
-  Paragraph,
-  Separator,
-  YGroup,
-  YStack
-} from "tamagui";
+import { ArrowLeft } from "@tamagui/lucide-icons";
+import { Button, H1, Image, Paragraph, YStack } from "tamagui";
 
 import { MySafeAreaView } from "../components/MySafeAreaView";
 import { MyStack } from "../components/MyStack";
 
 export default function Home() {
-  const router = useRouter();
-
   return (
     <MySafeAreaView>
       <MyStack>
@@ -26,7 +13,15 @@ export default function Home() {
           marginTop={"$12"}
           space="$2.5"
         >
-          <Image src={"../assets/icon.png"} />
+          <Image
+            source={{
+              // uri: "../assets/logo.png",
+              uri: "https://picsum.photos/200/300",
+              width: 200,
+              height: 200
+            }}
+            alignSelf="center"
+          />
           <H1
             py="$2"
             h={"$6"}
@@ -34,38 +29,23 @@ export default function Home() {
           >
             أهلاً بك في زميل
           </H1>
-          <Paragraph textAlign="center">نظام إدارة محتوى الطالب</Paragraph>
-        </YStack>
-
-        <YStack space="$2.5">
-          <Button onPress={() => router.push("/users/testuser")}>
-            الملف الشخصي
-          </Button>
-          <Button onPress={() => router.push("/tabs")}>التبويبات</Button>
-        </YStack>
-
-        <YStack space="$5">
-          <YGroup
-            bordered
-            separator={<Separator />}
-            theme="green"
+          <Paragraph
+            lineHeight={"$6"}
+            textAlign="center"
+            o={0.5}
           >
-            <YGroup.Item>
-              <Link
-                asChild
-                href="https://github.com/khateeboveskey/zameel"
-                target="_blank"
-              >
-                <ListItem
-                  flexDirection="row-reverse"
-                  hoverTheme
-                  pressTheme
-                  title="مستودع المشروع"
-                  icon={Github}
-                />
-              </Link>
-            </YGroup.Item>
-          </YGroup>
+            زميل هو نظام إدارة محتوى الطالب الجامعي، يمكن للطالب عبره إدارة كتبه
+            (ملازمه)، تنظيم تكاليفه وتسليمها، الوصول إلى المقررات الدراسية،
+            ومعرفة قاعات ومواعيد المحاضرات.{" "}
+          </Paragraph>
+          <Button
+            theme="purple"
+            h={"$6"}
+            icon={ArrowLeft}
+            scaleIcon={1.3}
+          >
+            التالي
+          </Button>
         </YStack>
       </MyStack>
     </MySafeAreaView>

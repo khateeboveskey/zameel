@@ -16,3 +16,5 @@ web-build/
 .DS_Store
 
 yarn-error.log
+
+.github/workflows/release.yml

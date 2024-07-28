@@ -1,8 +1,10 @@
 import { createAnimations } from "@tamagui/animations-react-native";
 import { createMedia } from "@tamagui/react-native-media-driver";
 import { shorthands } from "@tamagui/shorthands";
-import { themes, tokens } from "@tamagui/themes";
+import { tokens } from "@tamagui/themes";
 import { createFont, createTamagui } from "tamagui";
+
+import * as themes from "./themes/theme-output";
 
 const animations = createAnimations({
   bouncy: {

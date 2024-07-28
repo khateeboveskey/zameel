@@ -7,11 +7,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "upgrade:tamagui": "$npm_execpath up '*tamagui*' '@tamagui/*'"
+    "upgrade:tamagui": "$npm_execpath up '*tamagui*' '@tamagui/*'",
+    "generate-themes": "tamagui generate-themes ./themes/theme-builder.ts ./themes/theme-output.ts"
   },
   "dependencies": {
     "@tamagui/animations-react-native": "^1.104.2",
     "@tamagui/babel-plugin": "^1.104.2",
+    "@tamagui/cli": "^1.104.2",
     "@tamagui/config": "^1.104.2",
     "@tamagui/lucide-icons": "^1.104.2",
     "@tamagui/themes": "^1.104.2",

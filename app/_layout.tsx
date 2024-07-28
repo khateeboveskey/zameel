@@ -1,3 +1,4 @@
+// #region imports
 import { Suspense, useEffect } from "react";
 import { useColorScheme } from "react-native";
 import {
@@ -15,6 +16,7 @@ import config from "../tamagui.config";
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
+  // #region logic
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
@@ -29,10 +31,11 @@ export default function Layout() {
 
   if (!loaded) return null;
 
+  // #region ui
   return (
     <TamaguiProvider config={config}>
       <Suspense fallback={<Text>Loading...</Text>}>
-        <Theme name={colorScheme}>
+        <Theme name={colorScheme === "light" ? "light_accent" : "dark_accent"}>
           <ThemeProvider
             value={colorScheme === "light" ? DefaultTheme : DarkTheme}
           >

@@ -37,5 +37,5 @@ export default defineConfig({
   },
   base: "/zameel/",
   lastUpdated: true,
-  head: [['link', { rel: 'icon', href: '/zameel/logo.svg' }]]
+  head: [["link", { rel: "icon", href: "/zameel/logo.svg" }]]
 });

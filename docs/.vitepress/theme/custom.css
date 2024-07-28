@@ -1,0 +1,4 @@
+:root {
+  --vp-home-hero-image-background-image: radial-gradient(circle, #6366f180, #6366f120);
+  --vp-home-hero-image-filter: blur(80px);
+}

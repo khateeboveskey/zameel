@@ -4,5 +4,7 @@
   "singleAttributePerLine": true,
   "trailingComma": "none",
   "tabWidth": 2,
-  "singleQuote": false
+  "singleQuote": false,
+  "useTabs": false,
+  "printWidth": 100
 }

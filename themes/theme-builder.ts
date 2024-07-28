@@ -1,8 +1,5 @@
 import { createThemeBuilder } from "@tamagui/theme-builder";
-import {
-  defaultComponentThemes,
-  defaultSubThemes
-} from "@tamagui/themes/v3-themes";
+import { defaultComponentThemes, defaultSubThemes } from "@tamagui/themes/v3-themes";
 
 const palettes = {
   light: [
@@ -356,15 +353,7 @@ export const themes = createThemeBuilder()
   )
   .addChildThemes(defaultSubThemes)
   .addChildThemes(defaultComponentThemes, {
-    avoidNestingWithin: [
-      "alt1",
-      "alt2",
-      "surface1",
-      "surface2",
-      "surface3",
-      "surface4",
-      "active"
-    ]
+    avoidNestingWithin: ["alt1", "alt2", "surface1", "surface2", "surface3", "surface4", "active"]
   })
 
   .build();

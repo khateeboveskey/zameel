@@ -48,13 +48,13 @@ module.exports = {
         replacements: [
           {
             files: ["package.json", "app.json"],
-						from: "\"version\": \".*\"", // eslint-disable-line
-						to: "\"version\": \"${nextRelease.version}\"", // eslint-disable-line
+            from: '"version": ".*"', // eslint-disable-line
+            to: '"version": "${nextRelease.version}"' // eslint-disable-line
           },
           {
             files: ["app.json"],
-						from: `"versionCode": [^\n]*`, // eslint-disable-line
-						to: (match) => `"versionCode": ${parseInt(match.split(':')[1].trim()) + 1}`, // eslint-disable-line
+            from: `"versionCode": [^\n]*`, // eslint-disable-line
+            to: (match) => `"versionCode": ${parseInt(match.split(":")[1].trim()) + 1}` // eslint-disable-line
           }
         ]
       }

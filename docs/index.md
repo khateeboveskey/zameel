@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: 'Zameel'
-  text: 'Documentation'
+  name: "Zameel"
+  text: "Documentation"
   image:
     src: /logo.svg
     alt: Zameel Logo

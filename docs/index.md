@@ -6,7 +6,7 @@ hero:
   name: 'Zameel'
   text: 'Documentation'
   image:
-    src: ./public/logo.svg
+    src: /logo.svg
     alt: Zameel Logo
   tagline: Your never-be-absent classmate
   actions:

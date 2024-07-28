@@ -6,7 +6,7 @@ export default defineConfig({
   description: "Technical docs for Zameel, your never-be-absent classmate.",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: "./public/logo.svg",
+    logo: "/logo.svg",
     nav: [
       { text: "Home", link: "/" },
       { text: "Setup", link: "/setup" },
@@ -36,5 +36,6 @@ export default defineConfig({
     socialLinks: [{ icon: "github", link: "https://github.com/khateeboveskey/zameel" }]
   },
   base: "/zameel/",
-  lastUpdated: true
+  lastUpdated: true,
+  head: [['link', { rel: 'icon', href: '/zameel/logo.svg' }]]
 });

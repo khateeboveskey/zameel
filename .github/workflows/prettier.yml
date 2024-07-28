@@ -20,7 +20,7 @@ jobs:
                   ref: ${{ github.head_ref }}
 
             - name: Install Dependencies
-              run: npm install -D @vue/eslint-config-prettier prettier prettier-plugin-tailwindcss
+              run: npm install -D prettier
 
             - name: Format
               run: npx prettier --write .

@@ -1,8 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/package",
   "name": "zameel",
   "version": "1.0.0",
   "main": "expo-router/entry",
-  "type": "module",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -11,10 +11,7 @@
     "upgrade:tamagui": "$npm_execpath up '*tamagui*' '@tamagui/*'",
     "generate-themes": "tamagui generate-themes ./themes/theme-builder.ts ./themes/theme-output.ts",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@tamagui/animations-react-native": "^1.104.2",
@@ -65,8 +62,7 @@
     "husky": "^9.1.3",
     "prettier": "^2.8.8",
     "semantic-release": "19.0.5",
-    "typescript": "^5.5.4",
-    "vitepress": "^1.3.1"
+    "typescript": "^5.5.4"
   },
   "volta": {
     "node": "20.10.0",

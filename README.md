@@ -8,6 +8,9 @@
 
 Zameel (زميل) - an Arabic word for "Classmate" - is a mobile app that manages student's content like schedule, books, activities, and exams in an organized way.
 
+> [!NOTE]  
+> This is a client side application project for [its REST API](https://github.com/Mahmood-Ahmed-Alqirshy/zameel-rest-api).
+
 ## 💻 Setup
 
 ### 1. Fork the Repository
@@ -36,4 +39,4 @@ npm install
 npm run start
 ```
 
-For further information, please visit [Read the Docs](https://khateeboveskey.github.io/zameel/).
+For further information, please visit [Read the Docs](https://khateeboveskey.github.io/zameel-docs/).

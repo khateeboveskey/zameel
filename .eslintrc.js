@@ -16,10 +16,11 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "prettier/prettier": [
-      "warn", { usePrettierrc: true },
+      "warn",
+      { usePrettierrc: true },
       "error",
       {
-        "endOfLine": "auto"
+        endOfLine: "auto"
       }
     ],
     "react/react-in-jsx-scope": "off",

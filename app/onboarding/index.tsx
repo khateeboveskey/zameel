@@ -45,7 +45,11 @@ export default function Home() {
               تكاليفه وتسليمها، الوصول إلى المقررات الدراسية، ومعرفة قاعات ومواعيد المحاضرات.{" "}
             </Paragraph>
           </YStack>
-          <Link push href="/onboarding/screen2" asChild>
+          <Link
+            push
+            href="/onboarding/screen2"
+            asChild
+          >
             <Button
               h={"$6"}
               iconAfter={ArrowLeft}

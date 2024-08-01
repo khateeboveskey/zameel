@@ -35,7 +35,9 @@ export default function Layout() {
           <ThemeProvider value={colorScheme === "light" ? DefaultTheme : DarkTheme}>
             <Stack
               screenOptions={{
-                headerShown: false
+                headerShown: false,
+                animation: "slide_from_left",
+                orientation: "portrait"
               }}
             />
           </ThemeProvider>

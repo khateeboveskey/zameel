@@ -1,7 +1,7 @@
 import { useColorScheme } from "react-native";
 import { Link } from "expo-router";
 import { ArrowLeft } from "@tamagui/lucide-icons";
-import { Button, H1, Image, Paragraph, YStack } from "tamagui";
+import { Button, H1, Paragraph, YStack } from "tamagui";
 
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
@@ -18,14 +18,7 @@ export default function Home() {
           marginTop={"$12"}
           jc="space-between"
         >
-          <Image
-            source={{
-              uri: require("../../assets/logo.png")
-            }}
-            h={93}
-            w={"50%"}
-            alignSelf="center"
-          />
+          <Logo style={{ height: 100 }} />
           <YStack space="$4">
             <H1
               py="$2"

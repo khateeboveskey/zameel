@@ -1,6 +1,7 @@
 import { useColorScheme } from "react-native";
 import { ArrowLeft } from "@tamagui/lucide-icons";
 import { Button, H1, Paragraph, YStack } from "tamagui";
+import Logo from "../../components/Logo";
 
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";

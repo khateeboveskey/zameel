@@ -8,7 +8,7 @@
       "resizeMode": "contain"
     },
     "icon": "./assets/icon.png",
-    "name": "Zameel | زميل",
+    "name": "زميل",
     "slug": "zameel",
     "plugins": ["expo-font"],
     "extra": {

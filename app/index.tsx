@@ -1,8 +1,13 @@
-import { useColorScheme } from "react-native";
-
-import FirstOnboard from "./onboarding";
+import { MySafeAreaView } from "../components/MySafeAreaView";
+import { MyStack } from "../components/MyStack";
+import Onboarding from "./onboarding";
 
 export default function Home() {
-  const colorScheme = useColorScheme();
-  return <FirstOnboard />;
+  return (
+    <MySafeAreaView direction="rtl">
+      <MyStack>
+        <Onboarding />
+      </MyStack>
+    </MySafeAreaView>
+  );
 }

@@ -10,10 +10,7 @@
     "icon": "./assets/icon.png",
     "name": "زميل",
     "slug": "zameel",
-    "plugins": [
-      "expo-font",
-      "expo-router"
-    ],
+    "plugins": ["expo-font", "expo-router"],
     "extra": {
       "supportsRTL": true,
       "forcesRTL": true,

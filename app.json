@@ -8,8 +8,18 @@
       "resizeMode": "contain"
     },
     "icon": "./assets/icon.png",
-    "name": "Zameel | زميل",
+    "name": "زميل",
     "slug": "zameel",
-    "plugins": ["expo-font"]
+    "plugins": ["expo-font"],
+    "extra": {
+      "supportsRTL": true,
+      "forcesRTL": true,
+      "eas": {
+        "projectId": "38d9edf1-d9ce-45d9-b5cd-624f4848ee80"
+      }
+    },
+    "android": {
+      "package": "com.bitwise.zameel"
+    }
   }
 }

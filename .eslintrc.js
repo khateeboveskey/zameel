@@ -15,7 +15,14 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-empty-interface": "off",
-    "prettier/prettier": ["warn", { usePrettierrc: true }],
+    "prettier/prettier": [
+      "warn",
+      { usePrettierrc: true },
+      "error",
+      {
+        endOfLine: "auto"
+      }
+    ],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-unused-vars": ["warn"],
     "simple-import-sort/exports": "warn",

@@ -39,4 +39,4 @@ npm install
 npm run start
 ```
 
-For further information, please visit [Read the Docs](https://khateeboveskey.github.io/zameel-docs/).
+For further information [Read the Docs](https://khateeboveskey.github.io/zameel-docs/).

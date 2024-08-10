@@ -6,5 +6,7 @@
   "tabWidth": 2,
   "singleQuote": false,
   "useTabs": false,
-  "printWidth": 100
+  "printWidth": 100,
+  "htmlWhitespaceSensitivity": "ignore",
+  "bracketSameLine": true
 }

@@ -128,12 +128,14 @@ export default function Onboarding() {
           jc="center"
           mt="$3">
           <Link
+            asChild
             replace
             href={"/signup"}>
             <Text
               fontFamily={"$body"}
               fontWeight={"100"}
               o={0.5}
+              color={adaptiveColor}
               textDecorationLine="underline">
               تخطي
             </Text>

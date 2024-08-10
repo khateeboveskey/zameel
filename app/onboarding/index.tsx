@@ -133,7 +133,6 @@ export default function Onboarding() {
             href={"/signup"}>
             <Text
               fontFamily={"$body"}
-              fontWeight={"100"}
               o={0.5}
               color={adaptiveColor}
               textDecorationLine="underline">

@@ -20,7 +20,7 @@ export default function Layout() {
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
-    Alexandria: require("../assets/fonts/Alexandria-Regular.ttf")
+    Alexandria: require("../assets/fonts/Alexandria[wght].ttf")
   });
 
   useEffect(() => {

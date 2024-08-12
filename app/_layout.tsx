@@ -41,8 +41,7 @@ export default function Layout() {
               screenOptions={{
                 headerShown: false,
                 animation: "slide_from_left",
-                orientation: "portrait",
-                animationTypeForReplace: "pop"
+                orientation: "portrait"
               }}
             />
           </ThemeProvider>

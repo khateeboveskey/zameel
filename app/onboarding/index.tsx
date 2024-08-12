@@ -129,7 +129,7 @@ export default function Onboarding() {
           mt="$3">
           <Link
             asChild
-            replace
+            push
             href={"/signup"}>
             <Text
               fontFamily={"$body"}

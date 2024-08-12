@@ -4,7 +4,7 @@ import Onboarding from "./onboarding";
 
 export default function Home() {
   return (
-    <MySafeAreaView direction="rtl">
+    <MySafeAreaView>
       <MyStack>
         <Onboarding />
       </MyStack>

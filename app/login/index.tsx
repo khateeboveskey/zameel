@@ -6,7 +6,7 @@ import Logo from "../../components/Logo";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import { PRIMARY_COLOR } from "../../lib/constants";
-import { useAdaptiveColor } from "../../lib/utils";
+import { useAdaptiveColor } from "../../hooks/useAdaptiveColor";
 
 export default function Index() {
   return (

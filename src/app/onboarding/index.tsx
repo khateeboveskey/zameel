@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Animated, Dimensions, useColorScheme } from "react-native";
 import { Button, Circle, H1, Paragraph, XStack, YStack, Text } from "tamagui";
-import Logo from "../../components/Logo";
+import Logo from "@/components/Logo";
 
 // #region logic
 export default function Onboarding() {

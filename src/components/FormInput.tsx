@@ -1,9 +1,10 @@
-import { Label, Input, Text } from "tamagui";
 import { useState } from "react";
-import { validateEmail } from "../lib/utils";
-import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
+import { Input, Label, Text } from "tamagui";
 
-const FormInput = (props: any) => {
+import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
+import { validateEmail } from "../lib/utils";
+
+const FormInput = (props) => {
   const [error, setError] = useState("");
 
   /**

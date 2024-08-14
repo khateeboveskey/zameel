@@ -17,13 +17,13 @@ module.exports = {
     "@typescript-eslint/no-empty-interface": "off",
     "prettier/prettier": [
       "warn",
-      { usePrettierrc: true },
-      "error",
       {
+        usePrettierrc: true,
         endOfLine: "auto"
       }
     ],
     "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
     "@typescript-eslint/no-unused-vars": ["warn"],
     "simple-import-sort/exports": "warn",
     "simple-import-sort/imports": [

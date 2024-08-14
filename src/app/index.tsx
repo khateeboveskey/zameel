@@ -1,6 +1,6 @@
-import { MySafeAreaView } from "@/components/MySafeAreaView";
-import { MyStack } from "@/components/MyStack";
 import Onboarding from "./onboarding";
+
+import { MySafeAreaView, MyStack } from "@/components";
 
 export default function Home() {
   return (

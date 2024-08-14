@@ -1,12 +1,10 @@
-import { Link } from "expo-router";
 import React from "react";
+import { Link } from "expo-router";
 import { Button, Form, H1, Text, XStack, YStack } from "tamagui";
-import FormInput from "@/components/FormInput";
-import Logo from "@/components/Logo";
-import { MySafeAreaView } from "@/components/MySafeAreaView";
-import { MyStack } from "@/components/MyStack";
-import { PRIMARY_COLOR } from "@/lib/constants";
+
+import { FormInput, Logo, MySafeAreaView, MyStack } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import { PRIMARY_COLOR } from "@/lib/constants";
 
 export default function Index() {
   return (

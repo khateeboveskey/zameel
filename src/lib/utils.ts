@@ -1,5 +1,6 @@
+import { z } from "zod";
+
 import { TAILWIND_COLORS as tw } from "./constants";
-import { object, z } from "zod";
 
 /**
  * Capitalizes the first character of the provided text.
@@ -35,7 +36,7 @@ export function getAdaptiveColor(
  */
 export function getAdabtiveTWColor(
   color: string,
-  toneInDark: number = 500,
+  toneInDark = 500,
   colorScheme: "dark" | "light" | null = "dark"
 ) {
   if (toneInDark > 950 || toneInDark < 50) {

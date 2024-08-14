@@ -1,10 +1,10 @@
 // #region imports
+import { Suspense, useEffect } from "react";
+import { I18nManager, useColorScheme } from "react-native";
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { Suspense, useEffect } from "react";
-import { I18nManager, useColorScheme } from "react-native";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
 import config from "@/../tamagui.config";

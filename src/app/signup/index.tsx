@@ -1,13 +1,11 @@
-import { CircleAlert } from "lucide-react-native";
-import { Button, Form, H1, Paragraph, Text, XStack, YStack, ScrollView } from "tamagui";
-import { Link } from "expo-router";
-import Logo from "@/components/Logo";
 import { useState } from "react";
-import { MySafeAreaView } from "@/components/MySafeAreaView";
-import { MyStack } from "@/components/MyStack";
-import { PRIMARY_COLOR } from "@/lib/constants";
-import FormInput from "@/components/FormInput";
+import { Link } from "expo-router";
+import { CircleAlert } from "lucide-react-native";
+import { Button, Form, H1, Paragraph, ScrollView, Text, XStack, YStack } from "tamagui";
+
+import { FormInput, Logo, MySafeAreaView, MyStack } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import { PRIMARY_COLOR } from "@/lib/constants";
 
 function Index() {
   const [email, setEmail] = useState("");

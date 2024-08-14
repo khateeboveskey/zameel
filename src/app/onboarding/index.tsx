@@ -1,10 +1,11 @@
 // #region imports
-import { ArrowLeft, ArrowRight, Check } from "@tamagui/lucide-icons";
-import { Link } from "expo-router";
 import React, { useRef, useState } from "react";
 import { Animated, Dimensions, useColorScheme } from "react-native";
-import { Button, Circle, H1, Paragraph, XStack, YStack, Text } from "tamagui";
-import Logo from "@/components/Logo";
+import { ArrowLeft, ArrowRight, Check } from "@tamagui/lucide-icons";
+import { Link } from "expo-router";
+import { Button, Circle, H1, Paragraph, Text, XStack, YStack } from "tamagui";
+
+import { Logo } from "@/components";
 
 // #region logic
 export default function Onboarding() {

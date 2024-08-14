@@ -1,5 +1,6 @@
 import * as React from "react";
 import Svg, { Defs, G, Path, Rect } from "react-native-svg";
+
 // todo: refactor this to get color from Tamagui theme
 import { PRIMARY_COLOR } from "../lib/constants";
 

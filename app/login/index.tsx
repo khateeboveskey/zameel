@@ -6,7 +6,7 @@ import Logo from "../../components/Logo";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
 import { PRIMARY_COLOR } from "../../lib/constants";
-import { getAdaptiveColor } from "../../lib/utils";
+import { useAdaptiveColor } from "../../lib/utils";
 
 export default function Index() {
   return (
@@ -17,7 +17,7 @@ export default function Index() {
         direction="rtl">
         <Logo style={{ height: 100 }} />
         <H1
-          color={getAdaptiveColor("gray", 12)}
+          color={useAdaptiveColor("gray", 12)}
           textAlign="center">
           تسجيل الدخول
         </H1>
@@ -43,7 +43,7 @@ export default function Index() {
             gap="$2">
             <Text
               fontFamily="$body"
-              color={getAdaptiveColor("gray", 11)}>
+              color={useAdaptiveColor("gray", 11)}>
               ليس لديك حساب بعد؟
             </Text>
             <Link

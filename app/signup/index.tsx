@@ -5,13 +5,12 @@ import Logo from "../../components/Logo";
 import { useState } from "react";
 import { MySafeAreaView } from "../../components/MySafeAreaView";
 import { MyStack } from "../../components/MyStack";
-import { getAdaptiveColor, getAdabtiveTWColor } from "../../lib/utils";
+import { getAdabtiveTWColor } from "../../lib/utils";
 import { PRIMARY_COLOR } from "../../lib/constants";
 import FormInput from "../../components/FormInput";
-import { useColorScheme } from "react-native";
+import { useAdaptiveColor } from "../../hooks/useAdaptiveColor";
 
 function Index() {
-  const colorScheme = useColorScheme()
   const [email, setEmail] = useState("");
 
   return (
@@ -24,7 +23,7 @@ function Index() {
           direction="rtl">
           <Logo style={{ height: 100 }} />
           <H1
-            color={getAdaptiveColor("gray", 12)}
+            color={useAdaptiveColor("gray", 12)}
             textAlign="center">
             إنشاء حساب
           </H1>
@@ -63,7 +62,7 @@ function Index() {
               gap="$2">
               <Text
                 fontFamily="$body"
-                color={getAdaptiveColor("gray", 11, colorScheme)}>
+                color={useAdaptiveColor("gray", 11)}>
                 لديك حساب مسبقاً؟
               </Text>
               <Link
@@ -89,7 +88,7 @@ const WarningMessage = () => (
     mt="$2"
     gap="$3">
     <CircleAlert
-      color={getAdabtiveTWColor("orange", 600)}
+      color={useAdaptiveColor("orange", 600, true)}
       size={32}
       style={{ marginTop: 10 }}
     />
@@ -100,7 +99,7 @@ const WarningMessage = () => (
       <Text
         fontSize="$1"
         fontFamily="$body"
-        color={getAdabtiveTWColor("orange", 600)}>
+        color={useAdaptiveColor("orange", 600, true)}>
         تجنب الأسماء الحركية والألقاب
       </Text>
       <Paragraph
@@ -109,7 +108,7 @@ const WarningMessage = () => (
         o={0.8}
         textAlign="justify"
         lineHeight={22}
-        color={getAdabtiveTWColor("orange", 600)}>
+        color={useAdaptiveColor("orange", 600, true)}>
         هذا الاسم غير قابل للتعديل، وسيتم اعتماده عند طلب الانضمام لدفعة وتسليم التكاليف. وضع اسم
         غير حقيقي قد يؤدي إلى رفضك.
       </Paragraph>

@@ -1,12 +1,16 @@
 import { Label, Input, Text } from "tamagui";
-import { getAdaptiveColor } from "../lib/utils";
 import { useState } from "react";
 import { validateEmail } from "../lib/utils";
-import { useColorScheme } from "react-native";
+import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
 
 const FormInput = (props: any) => {
-  const colorScheme = useColorScheme();
   const [error, setError] = useState("");
+
+  /**
+   * don't try to inline this function, it will break the component!
+   * see https://react.dev/warnings/invalid-hook-call-warning
+   */
+  const grayColor = useAdaptiveColor("gray", 8);
 
   function handleChange(e: string) {
     const trimmedText = e.trim();
@@ -18,7 +22,7 @@ const FormInput = (props: any) => {
     <>
       <Label
         mt={"$3"}
-        color={getAdaptiveColor("gray", 12, colorScheme)}
+        color={useAdaptiveColor("gray", 12)}
         htmlFor={props.id}>
         {props.label}
       </Label>
@@ -26,11 +30,11 @@ const FormInput = (props: any) => {
         id={props.id}
         value={props.value}
         secureTextEntry={props.secureTextEntry}
-        borderColor={error ? "red" : getAdaptiveColor("gray", 8, colorScheme)} // here exactly
-        focusStyle={{ borderColor: error ? "red" : "$borderColorFocus" }} // but this works!
-        color={getAdaptiveColor("gray", 12, colorScheme)}
-        backgroundColor={getAdaptiveColor("gray", 5, colorScheme)}
-        placeholderTextColor={getAdaptiveColor("gray", 8, colorScheme)}
+        borderColor={error ? "red" : grayColor}
+        focusStyle={{ borderColor: error ? "red" : "$borderColorFocus" }}
+        color={useAdaptiveColor("gray", 12)}
+        backgroundColor={useAdaptiveColor("gray", 5)}
+        placeholderTextColor={grayColor}
         placeholder={props.placeholder}
         // fixme: autocomplete pastes the text twice
         onChangeText={handleChange}

@@ -1,5 +1,5 @@
 import { TAILWIND_COLORS as tw } from "./constants";
-import { z } from "zod";
+import { object, z } from "zod";
 
 /**
  * Capitalizes the first character of the provided text.

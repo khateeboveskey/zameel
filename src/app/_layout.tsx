@@ -7,7 +7,7 @@ import { Suspense, useEffect } from "react";
 import { I18nManager, useColorScheme } from "react-native";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
-import config from "../tamagui.config";
+import config from "../../tamagui.config";
 
 I18nManager.allowRTL(true);
 I18nManager.forceRTL(true);

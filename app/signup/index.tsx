@@ -11,7 +11,7 @@ import FormInput from "../../components/FormInput";
 import { useColorScheme } from "react-native";
 
 function Index() {
-  const colorScheme = useColorScheme()
+  const colorScheme = useColorScheme();
   const [email, setEmail] = useState("");
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "expo-router";
 import { Button, Form, H1, Text, XStack, YStack } from "tamagui";
 
@@ -7,6 +7,9 @@ import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
 
 export default function Index() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <MySafeAreaView>
       <MyStack
@@ -22,14 +25,18 @@ export default function Index() {
         <Form>
           <YStack mb="$6">
             <FormInput
+              value={email}
               id="email"
               label="البريد الإلكتروني"
               placeholder="example@email.com"
+              onChangeText={(text: string) => setEmail(text)}
             />
             <FormInput
+              value={password}
               id="password"
               label="كلمة المرور"
               secureTextEntry
+              onChangeText={(text: string) => setPassword(text)}
             />
           </YStack>
           <Form.Trigger asChild>

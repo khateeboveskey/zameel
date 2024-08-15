@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input, Label, Text } from "tamagui";
+import { Input, Label } from "tamagui";
 
 import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
 import { validateEmail } from "../lib/utils";
@@ -19,6 +19,16 @@ const FormInput = (props) => {
     setError(validateEmail(trimmedText));
   }
 
+  const borderColor = (focus = false) => {
+    if (props.isValid && props.value) {
+      return "green";
+    }
+    if (!props.isValid && props.value) {
+      return "red";
+    }
+    return focus ? "$borderColorFocus" : grayColor;
+  };
+
   return (
     <>
       <Label
@@ -31,8 +41,8 @@ const FormInput = (props) => {
         id={props.id}
         value={props.value}
         secureTextEntry={props.secureTextEntry}
-        borderColor={error ? "red" : grayColor}
-        focusStyle={{ borderColor: error ? "red" : "$borderColorFocus" }}
+        borderColor={borderColor()}
+        focusStyle={{ borderColor: borderColor(true) }}
         color={useAdaptiveColor("gray", 12)}
         backgroundColor={useAdaptiveColor("gray", 5)}
         placeholderTextColor={grayColor}
@@ -40,16 +50,6 @@ const FormInput = (props) => {
         // fixme: autocomplete pastes the text twice
         onChangeText={handleChange}
       />
-      {error && (
-        <Text
-          o={0.8}
-          mt={"$2"}
-          fontSize={"$1"}
-          fontFamily={"$body"}
-          color="red">
-          {error}
-        </Text>
-      )}
     </>
   );
 };

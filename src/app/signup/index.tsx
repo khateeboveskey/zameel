@@ -3,12 +3,35 @@ import { Link } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
 import { Button, Form, H1, Paragraph, ScrollView, Text, XStack, YStack } from "tamagui";
 
-import { FormInput, Logo, MySafeAreaView, MyStack } from "@/components";
+import { FormInput, FormPasswordChecklist, Logo, MySafeAreaView, MyStack } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
 
+type UserData = {
+  fullname: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+};
+
 function Index() {
-  const [email, setEmail] = useState("");
+  const [userData, setUserData] = useState<UserData>({
+    fullname: "",
+    email: "",
+    password: "",
+    passwordConfirm: ""
+  });
+
+  const [valid, setValid] = useState({
+    fullname: false,
+    email: false,
+    password: false,
+    passwordConfirm: false
+  });
+
+  const handleChange = (field: string, value: string) => {
+    setUserData((prev) => ({ ...prev, [field]: value }));
+  };
 
   return (
     <MySafeAreaView>
@@ -27,26 +50,41 @@ function Index() {
           <Form>
             <YStack mb="$6">
               <FormInput
+                value={userData.fullname}
                 id="fullname"
                 label="الاسم الكامل"
                 placeholder="مثال: عبدالرحمن صالح عبدالرحيم سالم"
+                onChangeText={(text: string) => handleChange("fullname", text)}
               />
               <WarningMessage />
               <FormInput
-                value={email}
+                value={userData.email}
                 id="email"
                 label="البريد الإلكتروني"
                 placeholder="example@email.com"
-                onChangeText={(text: string) => setEmail(text)}
+                onChangeText={(text: string) => handleChange("email", text)}
               />
               <FormInput
+                isValid={valid.password}
+                value={userData.password}
                 id="password"
                 label="كلمة المرور"
                 secureTextEntry
+                onChangeText={(text: string) => handleChange("password", text)}
+              />
+              <FormPasswordChecklist
+                value={userData.password}
+                passwordConfirm={userData.passwordConfirm}
+                onPasswordValidateChange={(validatedBoolean: boolean) =>
+                  setValid((prev) => ({ ...prev, password: validatedBoolean }))
+                }
               />
               <FormInput
-                id="password-confirmation"
+                isValid={valid.password}
+                value={userData.passwordConfirm}
+                id="password-confirm"
                 label="تأكيد كلمة المرور"
+                onChangeText={(text: string) => handleChange("passwordConfirm", text)}
                 secureTextEntry
               />
             </YStack>

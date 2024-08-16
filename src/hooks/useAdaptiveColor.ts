@@ -1,6 +1,6 @@
 import { useColorScheme } from "react-native";
 
-import { getAdabtiveTWColor, getAdaptiveColor } from "../lib/utils";
+import { getAdabtiveTWColor, getAdaptiveColor } from "@/utils/colors";
 
 /**
  * A React hook that returns an adaptive color based on the user's device color scheme.

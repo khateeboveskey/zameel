@@ -1,4 +1,4 @@
-import { TAILWIND_COLORS as tw } from "./constants";
+import { TAILWIND_COLORS as tw } from "@/lib/constants";
 
 /**
  * Capitalizes the first character of the provided text.

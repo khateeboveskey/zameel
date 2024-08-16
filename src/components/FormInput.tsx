@@ -3,18 +3,7 @@ import { Input, Label } from "tamagui";
 
 import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
 
-type FormInputProps = {
-  id: string;
-  label: string;
-  value: string;
-  onChangeText: (text: string) => void;
-  placeholder?: string;
-  isValid?: boolean;
-  secureTextEntry?: boolean;
-  /// Indicates whether the form input should not be validated.
-  /// If true, the form input will not be validated when the form is submitted.
-  noValidate?: boolean;
-};
+import type { FormInputProps } from "@/lib/types";
 
 const FormInput = (props: FormInputProps) => {
   const grayColor = useAdaptiveColor("gray", 8);

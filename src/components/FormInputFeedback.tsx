@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
 import { Text } from "tamagui";
 
+import type { FormInputFeedbackProps } from "@/lib/types";
 import validate from "@/utils/validation";
-
-type FormInputFeedbackProps = {
-  value: string;
-  validate: string;
-  onValidationErrors?: (errors: object[]) => void;
-};
 
 export default function FormInputFeedback(props: FormInputFeedbackProps) {
   const [errors, setErrors] = useState([]);

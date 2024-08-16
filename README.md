@@ -3,7 +3,7 @@
 > Your never-be-absent classmate.
 
 <p align="center">
-  <img style="margin: 80px 0px" width="50%" src="./assets/logo.png" alt="Zameel Icon"/>
+  <img style="margin: 80px 0px" width="50%" src="./src/assets/logo.png" alt="Zameel Icon"/>
 </p>
 
 Zameel (زميل) - an Arabic word for "Classmate" - is a mobile app that manages student's content like schedule, books, activities, and exams in an organized way.

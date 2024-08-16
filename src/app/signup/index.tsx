@@ -3,7 +3,14 @@ import { Link } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
 import { Button, Form, H1, Paragraph, ScrollView, Text, XStack, YStack } from "tamagui";
 
-import { FormInput, FormPasswordChecklist, Logo, MySafeAreaView, MyStack } from "@/components";
+import {
+  FormInput,
+  FormInputFeedback,
+  FormPasswordChecklist,
+  Logo,
+  MySafeAreaView,
+  MyStack
+} from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
 
@@ -59,14 +66,23 @@ function Index() {
               <WarningMessage />
               <FormInput
                 value={userData.email}
+                isValid={valid.email}
                 id="email"
                 label="البريد الإلكتروني"
                 placeholder="example@email.com"
-                onChangeText={(text: string) => handleChange("email", text)}
+                onChangeText={(text: string) => handleChange("email", text.trim())}
+              />
+              <FormInputFeedback
+                validate="email"
+                value={userData.email}
+                onValidationErrors={(errors) => {
+                  console.log("isValid is : ", errors.length === 0);
+                  setValid((prev) => ({ ...prev, email: errors.length === 0 }));
+                }}
               />
               <FormInput
-                isValid={valid.password}
                 value={userData.password}
+                isValid={valid.password}
                 id="password"
                 label="كلمة المرور"
                 secureTextEntry

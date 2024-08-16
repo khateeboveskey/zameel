@@ -1,5 +1,3 @@
-import { z } from "zod";
-
 import { TAILWIND_COLORS as tw } from "./constants";
 
 /**
@@ -45,13 +43,4 @@ export function getAdabtiveTWColor(
   }
   const toneInLight = 1000 - toneInDark;
   return tw[color][colorScheme === "light" ? toneInLight : toneInDark];
-}
-
-export function validateEmail(email: string) {
-  const emailSchema = z.string().email({ message: "عذراً، يرجى كتابة بريد إلكتروني صحيح." });
-  const result = emailSchema.safeParse(email);
-  if (!result.success) {
-    return result.error.issues[0].message;
-  }
-  return "";
 }

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Input, Label } from "tamagui";
 
-import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
-
+import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import type { FormInputProps } from "@/lib/types";
 
 const FormInput = (props: FormInputProps) => {

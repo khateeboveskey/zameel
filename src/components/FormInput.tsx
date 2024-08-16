@@ -3,12 +3,25 @@ import { Input, Label } from "tamagui";
 
 import { useAdaptiveColor } from "../hooks/useAdaptiveColor";
 
-const FormInput = (props) => {
+type FormInputProps = {
+  id: string;
+  label: string;
+  value: string;
+  onChangeText: (text: string) => void;
+  placeholder?: string;
+  isValid?: boolean;
+  secureTextEntry?: boolean;
+  /// Indicates whether the form input should not be validated.
+  /// If true, the form input will not be validated when the form is submitted.
+  noValidate?: boolean;
+};
+
+const FormInput = (props: FormInputProps) => {
   const grayColor = useAdaptiveColor("gray", 8);
   const [borderColor, setBorderColor] = useState(grayColor);
 
   useEffect(() => {
-    if (props.isValid !== undefined && props.value) {
+    if (props.isValid !== undefined && props.value && !props.noValidate) {
       setBorderColor(props.isValid ? "green" : "red");
     } else {
       setBorderColor(grayColor);
@@ -32,7 +45,9 @@ const FormInput = (props) => {
         value={props.value}
         secureTextEntry={props.secureTextEntry}
         borderColor={borderColor}
-        focusStyle={{ borderColor: props.value ? borderColor : "$borderColorFocus" }}
+        focusStyle={{
+          borderColor: props.value && !props.noValidate ? borderColor : "$borderColorFocus"
+        }}
         color={useAdaptiveColor("gray", 12)}
         backgroundColor={useAdaptiveColor("gray", 5)}
         placeholderTextColor={grayColor}

@@ -3,7 +3,13 @@ import { Text } from "tamagui";
 
 import validate from "@/utils/validation";
 
-export default function FormInputFeedback(props) {
+type FormInputFeedbackProps = {
+  value: string;
+  validate: string;
+  onValidationErrors?: (errors: object[]) => void;
+};
+
+export default function FormInputFeedback(props: FormInputFeedbackProps) {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {

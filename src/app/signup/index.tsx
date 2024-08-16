@@ -76,7 +76,6 @@ function Index() {
                 validate="email"
                 value={userData.email}
                 onValidationErrors={(errors) => {
-                  console.log("isValid is : ", errors.length === 0);
                   setValid((prev) => ({ ...prev, email: errors.length === 0 }));
                 }}
               />

@@ -2,13 +2,20 @@ import { useState } from "react";
 import { Link } from "expo-router";
 import { Button, Form, H1, Text, XStack, YStack } from "tamagui";
 
-import { FormInput, Logo, MySafeAreaView, MyStack } from "@/components";
+import { FormInput, FormInputFeedback, Logo, MySafeAreaView, MyStack } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
 
 export default function Index() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userCreditials, setUserCredentials] = useState({
+    email: "",
+    password: ""
+  });
+
+  const [valid, setValid] = useState({
+    email: false,
+    password: false
+  });
 
   return (
     <MySafeAreaView>
@@ -25,18 +32,31 @@ export default function Index() {
         <Form>
           <YStack mb="$6">
             <FormInput
-              value={email}
+              isValid={valid.email}
+              value={userCreditials.email}
               id="email"
               label="البريد الإلكتروني"
               placeholder="example@email.com"
-              onChangeText={(text: string) => setEmail(text)}
+              onChangeText={(text: string) =>
+                setUserCredentials((prev) => ({ ...prev, email: text }))
+              }
+            />
+            <FormInputFeedback
+              value={userCreditials.email}
+              validate="email"
+              onValidationErrors={(errors) => {
+                setValid((prev) => ({ ...prev, email: errors.length === 0 }));
+              }}
             />
             <FormInput
-              value={password}
+              noValidate
+              value={userCreditials.password}
               id="password"
               label="كلمة المرور"
               secureTextEntry
-              onChangeText={(text: string) => setPassword(text)}
+              onChangeText={(text: string) =>
+                setUserCredentials((prev) => ({ ...prev, password: text }))
+              }
             />
           </YStack>
           <Form.Trigger asChild>

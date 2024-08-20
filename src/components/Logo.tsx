@@ -1,13 +1,13 @@
 import * as React from "react";
-import Svg, { Defs, G, Path, Rect } from "react-native-svg";
+import Svg, { Defs, G, Path, Rect, SvgProps } from "react-native-svg";
 
 // todo: refactor this to get color from Tamagui theme
 import { PRIMARY_COLOR } from "@/lib/constants";
+import type { LogoProps } from "@/lib/types";
 
-export default function Logo(props) {
+export default function Logo(props: LogoProps & SvgProps) {
   return (
     <Svg
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 903.2 489.79"
       {...props}>
       <Defs></Defs>

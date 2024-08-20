@@ -1,26 +1,4 @@
 /**
- * Represents the props for a form input feedback component.
- * @property {string} value - The current value of the form input.
- * @property {string} validate - The validation rule for the form input.
- * @property {(errors: object[]) => void} [onValidationErrors] - Callback function that is called when there are validation errors for the form input.
- */
-export declare type FormInputFeedbackProps = {
-  /**
-   * The current value of the form input.
-   */
-  value: string;
-  /**
-   * The validation rule for the form input.
-   */
-  validate: string;
-  /**
-   * Callback function that is called when there are validation errors for the form input.
-   * @param errors - An array of validation error objects.
-   */
-  onValidationErrors?: (errors: object[]) => void;
-};
-
-/**
  * Represents the props for a form input component.
  * @property {string} id - A unique identifier for the form input.
  * @property {string} label - The label for the form input.
@@ -65,4 +43,38 @@ export declare type FormInputProps = {
    * Indicates whether the form input should not be validated.
    */
   noValidate?: boolean;
+};
+
+/**
+ * Represents the props for a form input feedback component.
+ * @property {string} value - The current value of the form input.
+ * @property {string} validate - The validation rule for the form input.
+ * @property {(errors: object[]) => void} [onValidationErrors] - Callback function that is called when there are validation errors for the form input.
+ */
+export declare type FormInputFeedbackProps = {
+  /**
+   * The current value of the form input.
+   */
+  value: string;
+  /**
+   * The validation rule for the form input.
+   */
+  validate: string;
+  /**
+   * Callback function that is called when there are validation errors for the form input.
+   * @param errors - An array of validation error objects.
+   */
+  onValidationErrors?: (errors: object[]) => void;
+};
+
+/**
+ * Represents the props for a logo component.
+ * @property {string} [color] - The color of the logo. Defaults to `PRIMARY_COLOR`.
+ */
+export declare type LogoProps = {
+  /**
+   * The color of the element.
+   * @default PRIMARY_COLOR
+   */
+  color?: string;
 };

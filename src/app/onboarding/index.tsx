@@ -15,12 +15,7 @@ export default function Onboarding() {
   const screenWidth = Dimensions.get("window").width * 0.9;
 
   const slide = (dir: number) => {
-    let nextPage: number;
-    if (dir === 1) {
-      nextPage = (currentPage + 1) % pages.length;
-    } else {
-      nextPage = (currentPage - 1 + pages.length) % pages.length;
-    }
+    const nextPage = (currentPage + dir + pages.length) % pages.length;
     Animated.timing(slideAnim, {
       toValue: -screenWidth * -nextPage,
       duration: 300,
@@ -47,106 +42,148 @@ export default function Onboarding() {
           transform: [{ translateX: slideAnim }]
         }}>
         {pages.map((page, index) => (
-          <YStack
+          <SliderPage
             key={index}
-            style={{ width: screenWidth }}
-            gap="$2">
-            <H1
-              py="$2"
-              h={"$6"}
-              textAlign="center"
-              color={adaptiveColor}
-              animation="lazy"
-              enterStyle={{ opacity: 0, scale: 0.9 }}
-              exitStyle={{ opacity: 0, scale: 0.9 }}>
-              {page.title}
-            </H1>
-            <Paragraph
-              lineHeight={"$6"}
-              textAlign="center"
-              o={0.5}
-              color={adaptiveColor}
-              animation="lazy"
-              enterStyle={{ opacity: 0, y: 10 }}
-              exitStyle={{ opacity: 0, y: -10 }}>
-              {page.description}
-            </Paragraph>
-          </YStack>
+            title={page.title}
+            description={page.description}
+            screenWidth={screenWidth}
+            adaptiveColor={adaptiveColor}
+          />
         ))}
       </Animated.View>
       <YStack>
-        <XStack
-          justifyContent="center"
-          my="$5">
-          {pages.map((_, index) => (
-            <Circle
-              backgroundColor={adaptiveColor}
-              key={index}
-              size={8}
-              mx={2}
-              o={index === currentPage ? 0.8 : 0.2}
-            />
-          ))}
-        </XStack>
-        <XStack gap="$4">
-          <Button
-            variant="outlined"
-            color={"$borderColor"}
-            noTextWrap
-            h={"$6"}
-            iconAfter={ArrowRight}
-            scaleIcon={1.3}
-            o={currentPage === 0 ? 0.5 : 1}
-            onPress={() => slide(-1)}
-            disabled={currentPage === 0}
-          />
-          {isLastPage ? (
-            <Link
-              asChild
-              replace
-              href="/signup">
-              <Button
-                flexGrow={1}
-                h={"$6"}
-                iconAfter={Check}
-                scaleIcon={1.3}
-                onPress={() => slide(1)}>
-                إنهاء
-              </Button>
-            </Link>
-          ) : (
-            <Button
-              flexGrow={1}
-              h={"$6"}
-              iconAfter={ArrowLeft}
-              scaleIcon={1.3}
-              onPress={() => slide(1)}>
-              التالي
-            </Button>
-          )}
-        </XStack>
-        <XStack
-          jc="center"
-          mt="$3">
-          <Link
-            asChild
-            push
-            href={"/signup"}>
-            <Text
-              fontFamily={"$body"}
-              o={0.5}
-              color={adaptiveColor}
-              textDecorationLine="underline">
-              تخطي
-            </Text>
-          </Link>
-        </XStack>
+        <PageIndicator
+          totalPages={pages.length}
+          currentPage={currentPage}
+          adaptiveColor={adaptiveColor}
+        />
+        <NavigationButtons
+          currentPage={currentPage}
+          onPrevious={() => slide(-1)}
+          onNext={() => slide(1)}
+          isLastPage={isLastPage}
+        />
+        <SkipButton adaptiveColor={adaptiveColor} />
       </YStack>
     </YStack>
   );
 }
 
-// #region data
+// #region SliderPage
+function SliderPage({ title, description, screenWidth, adaptiveColor }) {
+  return (
+    <YStack
+      style={{ width: screenWidth }}
+      gap="$2">
+      <H1
+        py="$2"
+        h={"$6"}
+        textAlign="center"
+        color={adaptiveColor}
+        animation="lazy"
+        enterStyle={{ opacity: 0, scale: 0.9 }}
+        exitStyle={{ opacity: 0, scale: 0.9 }}>
+        {title}
+      </H1>
+      <Paragraph
+        lineHeight={"$6"}
+        textAlign="center"
+        o={0.5}
+        color={adaptiveColor}
+        animation="lazy"
+        enterStyle={{ opacity: 0, y: 10 }}
+        exitStyle={{ opacity: 0, y: -10 }}>
+        {description}
+      </Paragraph>
+    </YStack>
+  );
+}
+
+// #region PageIndicator
+function PageIndicator({ totalPages, currentPage, adaptiveColor }) {
+  return (
+    <XStack
+      justifyContent="center"
+      my="$5">
+      {[...Array(totalPages)].map((_, index) => (
+        <Circle
+          backgroundColor={adaptiveColor}
+          key={index}
+          size={8}
+          mx={2}
+          o={index === currentPage ? 0.8 : 0.2}
+        />
+      ))}
+    </XStack>
+  );
+}
+
+// #region NavigationButtons
+function NavigationButtons({ currentPage, onPrevious, onNext, isLastPage }) {
+  return (
+    <XStack gap="$4">
+      <Button
+        variant="outlined"
+        color={"$borderColor"}
+        noTextWrap
+        h={"$6"}
+        iconAfter={ArrowRight}
+        scaleIcon={1.3}
+        o={currentPage === 0 ? 0.5 : 1}
+        onPress={onPrevious}
+        disabled={currentPage === 0}
+      />
+      {isLastPage ? (
+        <Link
+          asChild
+          replace
+          href="/signup">
+          <Button
+            flexGrow={1}
+            h={"$6"}
+            iconAfter={Check}
+            scaleIcon={1.3}
+            onPress={onNext}>
+            إنهاء
+          </Button>
+        </Link>
+      ) : (
+        <Button
+          flexGrow={1}
+          h={"$6"}
+          iconAfter={ArrowLeft}
+          scaleIcon={1.3}
+          onPress={onNext}>
+          التالي
+        </Button>
+      )}
+    </XStack>
+  );
+}
+
+// #region SkipButton
+function SkipButton({ adaptiveColor }) {
+  return (
+    <XStack
+      jc="center"
+      mt="$3">
+      <Link
+        asChild
+        push
+        href={"/signup"}>
+        <Text
+          fontFamily={"$body"}
+          o={0.5}
+          color={adaptiveColor}
+          textDecorationLine="underline">
+          تخطي
+        </Text>
+      </Link>
+    </XStack>
+  );
+}
+
+// #region pages
 const pages = [
   {
     title: "أهلاً بك في زميل",

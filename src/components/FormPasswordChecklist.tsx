@@ -1,11 +1,34 @@
+import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import PasswordValidate from "react-native-password-validate-checklist";
 
 export default function name(props) {
   const colorScheme = useColorScheme();
+
+  const [display, setDisplay] = useState<"none" | "flex">("none");
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    if (props.value) {
+      setDisplay("flex");
+    } else {
+      setDisplay("none");
+    }
+
+    if (isValid) {
+      setDisplay("none");
+    }
+  }, [props.value, isValid]);
+
+  const onPasswordValidateChange = (validationResult: boolean) => {
+    setIsValid(validationResult);
+    props.onPasswordValidateChange(validationResult);
+  };
+
   return (
     <PasswordValidate
       containerStyle={{
+        display: display,
         opacity: 0.7
       }}
       labelStyle={{
@@ -42,7 +65,7 @@ export default function name(props) {
           label: "يجب أن تطابق تأكيد كلمة المرور."
         }
       ]}
-      onPasswordValidateChange={props.onPasswordValidateChange}
+      onPasswordValidateChange={onPasswordValidateChange}
       iconSuccessSource={require("@/assets/check.png")}
       iconErrorSource={require("@/assets/x.png")}
     />

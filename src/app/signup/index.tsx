@@ -59,11 +59,23 @@ function Index() {
               <FormInput
                 value={userData.fullname}
                 id="fullname"
+                isValid={valid.fullname}
                 label="الاسم الكامل"
                 placeholder="مثال: عبدالرحمن صالح عبدالرحيم سالم"
                 onChangeText={(text: string) => handleChange("fullname", text)}
               />
-              <WarningMessage />
+              <FormInputFeedback
+                validate="fullname"
+                value={userData.fullname}
+                onValidationErrors={(errors) => {
+                  setValid((prev) => ({ ...prev, fullname: errors.length === 0 }));
+                }}
+              />
+              <WarningMessage
+                style={{
+                  display: userData.fullname ? "flex" : "none"
+                }}
+              />
               <FormInput
                 value={userData.email}
                 isValid={valid.email}
@@ -133,8 +145,9 @@ function Index() {
   );
 }
 
-const WarningMessage = () => (
+const WarningMessage = (props) => (
   <XStack
+    style={props.style}
     mt="$2"
     gap="$3">
     <CircleAlert

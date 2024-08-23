@@ -8,6 +8,16 @@ const validate = {
       return result.error.issues;
     }
     return [];
+  },
+  fullname: (fullname: string) => {
+    const fullnameSchema = z.string().refine((value) => value.trim().split(/\s+/).length >= 4, {
+      message: "عذراً، يجب أن يكون الاسم رباعياً على الأقل."
+    });
+    const result = fullnameSchema.safeParse(fullname);
+    if (!result.success) {
+      return result.error.issues;
+    }
+    return [];
   }
 };
 

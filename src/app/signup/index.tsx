@@ -13,6 +13,7 @@ import {
 } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
+import { validateBoolObject } from "@/utils/validation";
 
 type UserData = {
   fullname: string;
@@ -40,6 +41,13 @@ function Index() {
     setUserData((prev) => ({ ...prev, [field]: value }));
   };
 
+  function sendData() {
+    if (validateBoolObject(valid)) {
+      // send data to server
+      console.log("Sent!");
+    }
+  }
+
   return (
     <MySafeAreaView>
       <ScrollView>
@@ -54,7 +62,7 @@ function Index() {
             textAlign="center">
             إنشاء حساب
           </H1>
-          <Form>
+          <Form onSubmit={() => sendData()}>
             <YStack mb="$6">
               <FormInput
                 value={userData.fullname}
@@ -103,7 +111,11 @@ function Index() {
                 value={userData.password}
                 passwordConfirm={userData.passwordConfirm}
                 onPasswordValidateChange={(validatedBoolean: boolean) =>
-                  setValid((prev) => ({ ...prev, password: validatedBoolean }))
+                  setValid((prev) => ({
+                    ...prev,
+                    password: validatedBoolean,
+                    passwordConfirm: validatedBoolean
+                  }))
                 }
               />
               <FormInput

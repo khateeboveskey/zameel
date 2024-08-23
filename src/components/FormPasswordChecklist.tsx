@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import PasswordValidate from "react-native-password-validate-checklist";
 
-export default function name(props) {
+export default function FormPasswordChecklist(props) {
   const colorScheme = useColorScheme();
 
   const [display, setDisplay] = useState<"none" | "flex">("none");

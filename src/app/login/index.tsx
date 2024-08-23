@@ -5,6 +5,7 @@ import { Button, Form, H1, Text, XStack, YStack } from "tamagui";
 import { FormInput, FormInputFeedback, Logo, MySafeAreaView, MyStack } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
+import { validateBoolObject } from "@/utils/validation";
 
 export default function Index() {
   const [userCreditials, setUserCredentials] = useState({
@@ -16,6 +17,12 @@ export default function Index() {
     email: false,
     password: false
   });
+
+  function sendData() {
+    if (validateBoolObject(valid)) {
+      console.log("Sent!");
+    }
+  }
 
   return (
     <MySafeAreaView>
@@ -29,7 +36,7 @@ export default function Index() {
           textAlign="center">
           تسجيل الدخول
         </H1>
-        <Form>
+        <Form onSubmit={() => sendData()}>
           <YStack mb="$6">
             <FormInput
               isValid={valid.email}

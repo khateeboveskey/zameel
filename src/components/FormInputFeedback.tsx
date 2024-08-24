@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Text } from "tamagui";
 
+import { useDebouncedEffect } from "@/hooks/useDebouncedEffect";
 import type { FormInputFeedbackProps } from "@/lib/types";
-import validate from "@/utils/validation";
+import { validate } from "@/utils";
 
 export default function FormInputFeedback(props: FormInputFeedbackProps) {
   const [errors, setErrors] = useState([]);
 
-  useEffect(() => {
+  useDebouncedEffect(() => {
     if (props.value && props.validate) {
       const validationErrors = validate[props.validate](props.value);
       setErrors(validationErrors);

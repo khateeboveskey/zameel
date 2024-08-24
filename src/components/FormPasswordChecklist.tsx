@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
 import PasswordValidate from "react-native-password-validate-checklist";
 
+import { debounce } from "@/utils";
+
 export default function FormPasswordChecklist(props) {
   const colorScheme = useColorScheme();
 
@@ -65,7 +67,7 @@ export default function FormPasswordChecklist(props) {
           label: "يجب أن تطابق تأكيد كلمة المرور."
         }
       ]}
-      onPasswordValidateChange={onPasswordValidateChange}
+      onPasswordValidateChange={debounce(onPasswordValidateChange)}
       iconSuccessSource={require("@/assets/check.png")}
       iconErrorSource={require("@/assets/x.png")}
     />

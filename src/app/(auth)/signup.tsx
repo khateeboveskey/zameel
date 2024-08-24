@@ -13,7 +13,7 @@ import {
 } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
-import { validateBoolObject } from "@/utils/validation";
+import { validateBoolObject } from "@/utils";
 
 type UserData = {
   fullname: string;

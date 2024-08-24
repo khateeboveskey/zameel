@@ -5,7 +5,7 @@ import { Button, Form, H1, Text, XStack, YStack } from "tamagui";
 import { FormInput, FormInputFeedback, Logo, MySafeAreaView, MyStack } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import { PRIMARY_COLOR } from "@/lib/constants";
-import { validateBoolObject } from "@/utils/validation";
+import { validateBoolObject } from "@/utils";
 
 export default function Index() {
   const [userCreditials, setUserCredentials] = useState({
@@ -45,7 +45,7 @@ export default function Index() {
               label="البريد الإلكتروني"
               placeholder="example@email.com"
               onChangeText={(text: string) =>
-                setUserCredentials((prev) => ({ ...prev, email: text }))
+                setUserCredentials((prev) => ({ ...prev, email: text.trim() }))
               }
             />
             <FormInputFeedback

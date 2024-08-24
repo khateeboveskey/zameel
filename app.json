@@ -1,16 +1,21 @@
 {
   "expo": {
-    "scheme": "tamagui-app",
+    "name": "زميل",
+    "description": "زميل هو نظام إدارة محتوى الطالب",
+    "slug": "zameel",
+    "scheme": "zameel",
+    "owner": "Bitwise",
+    "githubUrl": "https://github.com/khateeboveskey/zameel",
+    "orientation": "portrait",
     "userInterfaceStyle": "automatic",
+    "primaryColor": "#6366f1",
     "splash": {
       "backgroundColor": "#ffffff",
-      "image": "./assets/splash.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain"
     },
-    "icon": "./assets/icon.png",
-    "name": "زميل",
-    "slug": "zameel",
-    "plugins": ["expo-font"],
+    "icon": "./src/assets/icon.png",
+    "plugins": ["expo-font", "expo-router"],
     "extra": {
       "supportsRTL": true,
       "forcesRTL": true,

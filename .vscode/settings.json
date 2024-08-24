@@ -19,6 +19,7 @@
     "**/Thumbs.db": true,
     ".expo": true,
     ".yarn": true,
+    ".tamagui": true,
     "node_modules": true
   }
 }

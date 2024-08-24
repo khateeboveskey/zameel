@@ -4,7 +4,7 @@ import { MySafeAreaView, MyStack } from "@/components";
 
 export default function Home() {
   return (
-    <MySafeAreaView>
+    <MySafeAreaView direction="rtl">
       <MyStack>
         <Onboarding />
       </MyStack>

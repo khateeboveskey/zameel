@@ -55,7 +55,10 @@ function Index() {
           mt="$10"
           jc="center"
           gap="$3"
-          direction="rtl">
+          direction="rtl"
+          alignItems="center"
+          maxWidth={600} 
+          mx="auto" >
           <Logo style={{ height: 100 }} />
           <H1
             color={useAdaptiveColor("gray", 12)}

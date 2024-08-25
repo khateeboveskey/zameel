@@ -33,6 +33,8 @@ export default function Onboarding() {
       fullscreen
       p={20}
       maxWidth={600}
+      mx="auto" 
+      width="100%"
       marginTop={"$12"}
       jc="space-between">
       <Logo style={{ height: 100 }} />

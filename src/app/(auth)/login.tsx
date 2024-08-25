@@ -29,7 +29,10 @@ export default function Index() {
       <MyStack
         jc="center"
         gap="$3"
-        direction="rtl">
+        direction="rtl"
+        maxWidth={600} 
+        mx="auto" 
+        width="100%" >
         <Logo style={{ height: 100 }} />
         <H1
           color={useAdaptiveColor("gray", 12)}

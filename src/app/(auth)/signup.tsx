@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
 import { Button, Form, H1, Paragraph, ScrollView, Text, XStack, YStack } from "tamagui";
 
@@ -42,10 +42,11 @@ function Index() {
   };
 
   function sendData() {
-    if (validateBoolObject(valid)) {
-      // send data to server
-      console.log("Sent!");
-    }
+    // if (validateBoolObject(valid)) {
+    // send data to server
+    console.log("Sent!");
+    router.push("/groups");
+    // }
   }
 
   return (

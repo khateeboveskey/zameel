@@ -173,7 +173,6 @@ const WarningMessage = (props) => (
       my="$2"
       gap="$2">
       <Text
-        fontSize="$1"
         fontFamily="$body"
         color={useAdaptiveColor("orange", 600, true)}>
         تجنب الأسماء الحركية والألقاب

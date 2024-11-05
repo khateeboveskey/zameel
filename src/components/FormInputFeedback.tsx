@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Text } from "tamagui";
 
 import { useDebouncedEffect } from "@/hooks/useDebouncedEffect";
@@ -35,6 +35,7 @@ export default function FormInputFeedback(props: FormInputFeedbackProps) {
       color="red">
       {errors.map((error, index) => (
         <Text
+          fontSize={"$2.5"}
           color="red"
           key={index}>
           {error.message}

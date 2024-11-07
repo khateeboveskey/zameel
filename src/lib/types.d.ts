@@ -1,3 +1,4 @@
+// todo: move this to ../types/
 /**
  * Represents the props for a form input component.
  * @property {string} id - A unique identifier for the form input.

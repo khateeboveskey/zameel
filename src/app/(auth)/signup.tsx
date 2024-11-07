@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
-import { Button, Form, H1, Paragraph, ScrollView, Text, XStack, YStack } from "tamagui";
+import { Button, Form, H1, Paragraph, ScrollView, Spinner, Text, XStack, YStack } from "tamagui";
 
 import {
   FormInput,
@@ -12,7 +12,9 @@ import {
   MyStack
 } from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import useRequest from "@/hooks/useRequest";
 import { PRIMARY_COLOR } from "@/lib/constants";
+import { UserRegisterPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";
 
 type UserData = {
@@ -41,12 +43,24 @@ function Index() {
     setUserData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const { post, isLoading } = useRequest();
+
   function sendData() {
-    // if (validateBoolObject(valid)) {
-    // send data to server
-    console.log("Sent!");
-    router.push("/groups");
-    // }
+    if (validateBoolObject(valid)) {
+      // send data to server
+      const data: UserRegisterPayload = {
+        data: {
+          type: "user",
+          attributes: {
+            name: userData.fullname,
+            email: userData.email,
+            password: userData.password,
+            password_confirmation: userData.passwordConfirm
+          }
+        }
+      };
+      post("/register", data);
+    }
   }
 
   return (
@@ -129,7 +143,18 @@ function Index() {
               />
             </YStack>
             <Form.Trigger asChild>
-              <Button>إنشاء حساب</Button>
+              <Button
+                disabled={!validateBoolObject(valid) && isLoading}
+                style={{ opacity: validateBoolObject(valid) && !isLoading ? 1 : 0.7 }}>
+                {isLoading ? (
+                  <Spinner
+                    color="white"
+                    size="small"
+                  />
+                ) : (
+                  "إنشاء حساب"
+                )}{" "}
+              </Button>
             </Form.Trigger>
             <XStack
               jc="center"

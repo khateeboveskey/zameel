@@ -1,28 +1,80 @@
+// #region imports
 import { useState } from "react";
+import { deviceName } from "expo-device";
 import { Link } from "expo-router";
-import { Button, Form, H1, Text, XStack, YStack } from "tamagui";
+import { Button, Form, H1, Spinner, Text, XStack, YStack } from "tamagui";
 
-import { FormInput, FormInputFeedback, Logo, MySafeAreaView, MyStack } from "@/components";
+import {
+  FormInput,
+  FormInputFeedback,
+  FormPasswordChecklist,
+  Logo,
+  MySafeAreaView,
+  MyStack
+} from "@/components";
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import useAsyncStorage from "@/hooks/useAsyncStorage";
+import useRequest from "@/hooks/useRequest";
 import { PRIMARY_COLOR } from "@/lib/constants";
+import axios from "@/plugins/axios";
+import { UserLoginPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";
 
-export default function Index() {
-  const [userCreditials, setUserCredentials] = useState({
+export default function LoginScreen() {
+  const [formData, setFormData] = useState({
     email: "",
     password: ""
   });
 
-  const [valid, setValid] = useState({
+  const [validationState, setValidationState] = useState({
     email: false,
     password: false
   });
 
-  function sendData() {
-    if (validateBoolObject(valid)) {
-      console.log("Sent!");
+  const { setItem } = useAsyncStorage();
+  const { post, isLoading } = useRequest();
+  const adaptiveColor = useAdaptiveColor("gray", 12);
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: field === "email" ? value.trim() : value
+    }));
+  };
+
+  const handleValidationChange = (field: string, isValid: boolean) => {
+    setValidationState((prev) => ({
+      ...prev,
+      [field]: isValid
+    }));
+  };
+
+  const isFormValid = validateBoolObject(validationState) && !isLoading;
+
+  const handleLogin = async () => {
+    if (!isFormValid) return;
+
+    const loginPayload: UserLoginPayload = {
+      data: {
+        attributes: {
+          email: formData.email,
+          password: formData.password
+        }
+      },
+      meta: {
+        deviceName
+      }
+    };
+
+    try {
+      const response = await post("/login", loginPayload);
+      const token = response.data.token;
+      await setItem("token", token);
+      axios.defaults.headers.Authorization = `Bearer ${token}`;
+    } catch (error) {
+      console.error("Login failed:", error);
     }
-  }
+  };
 
   return (
     <MySafeAreaView>
@@ -32,42 +84,57 @@ export default function Index() {
         direction="rtl">
         <Logo style={{ height: 100 }} />
         <H1
-          color={useAdaptiveColor("gray", 12)}
+          color={adaptiveColor}
           textAlign="center">
           تسجيل الدخول
         </H1>
-        <Form onSubmit={() => sendData()}>
+        <Form onSubmit={handleLogin}>
           <YStack mb="$6">
             <FormInput
-              isValid={valid.email}
-              value={userCreditials.email}
+              isValid={validationState.email}
+              value={formData.email}
               id="email"
               label="البريد الإلكتروني"
               placeholder="example@email.com"
-              onChangeText={(text: string) =>
-                setUserCredentials((prev) => ({ ...prev, email: text.trim() }))
-              }
+              onChangeText={(text: string) => handleInputChange("email", text)}
             />
             <FormInputFeedback
-              value={userCreditials.email}
+              value={formData.email}
               validate="email"
               onValidationErrors={(errors) => {
-                setValid((prev) => ({ ...prev, email: errors.length === 0 }));
+                handleValidationChange("email", errors.length === 0);
               }}
             />
             <FormInput
               noValidate
-              value={userCreditials.password}
+              value={formData.password}
               id="password"
               label="كلمة المرور"
               secureTextEntry
-              onChangeText={(text: string) =>
-                setUserCredentials((prev) => ({ ...prev, password: text }))
+              onChangeText={(text: string) => handleInputChange("password", text)}
+            />
+            <FormPasswordChecklist
+              style={{ display: "none" }}
+              value={formData.password}
+              passwordConfirm={formData.password}
+              onPasswordValidateChange={(isValid: boolean) =>
+                handleValidationChange("password", isValid)
               }
             />
           </YStack>
           <Form.Trigger asChild>
-            <Button>إنشاء حساب</Button>
+            <Button
+              disabled={!isFormValid}
+              style={{ opacity: isFormValid ? 1 : 0.7 }}>
+              {isLoading ? (
+                <Spinner
+                  color="white"
+                  size="small"
+                />
+              ) : (
+                "تسجيل الدخول"
+              )}
+            </Button>
           </Form.Trigger>
           <XStack
             jc="center"

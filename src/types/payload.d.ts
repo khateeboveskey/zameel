@@ -10,4 +10,16 @@ export type UserRegisterPayload = {
   };
 };
 
-export type PayloadData = UserRegisterPayload;
+export type UserLoginPayload = {
+  data: {
+    attributes: {
+      email: string;
+      password: string;
+    };
+  };
+  meta: {
+    deviceName: string;
+  };
+};
+
+export type PayloadData = UserRegisterPayload | UserLoginPayload;

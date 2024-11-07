@@ -1,3 +1,4 @@
+// #region imports
 import { useState } from "react";
 import { Link } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
@@ -17,6 +18,7 @@ import { PRIMARY_COLOR } from "@/lib/constants";
 import { UserRegisterPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";
 
+// #region logic
 type UserData = {
   fullname: string;
   email: string;
@@ -45,7 +47,7 @@ function Index() {
 
   const { post, isLoading } = useRequest();
 
-  function sendData() {
+  async function sendData() {
     if (validateBoolObject(valid)) {
       // send data to server
       const data: UserRegisterPayload = {
@@ -59,10 +61,11 @@ function Index() {
           }
         }
       };
-      post("/register", data);
+      await post("/register", data);
     }
   }
 
+  // #region ui
   return (
     <MySafeAreaView>
       <ScrollView>
@@ -183,6 +186,7 @@ function Index() {
   );
 }
 
+// #region WarningMessage
 const WarningMessage = (props) => (
   <XStack
     style={props.style}

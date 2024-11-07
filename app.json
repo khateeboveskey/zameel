@@ -15,14 +15,18 @@
       "resizeMode": "contain"
     },
     "icon": "./src/assets/icon.png",
-    "plugins": ["expo-font", "expo-router", [
-      "expo-build-properties",
-      {
-        "android": {
-          "usesCleartextTraffic": true
+    "plugins": [
+      "expo-font",
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
         }
-      }
-    ]],
+      ]
+    ],
     "extra": {
       "supportsRTL": true,
       "forcesRTL": true,

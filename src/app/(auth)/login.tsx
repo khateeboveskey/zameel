@@ -1,6 +1,5 @@
 // #region imports
 import { useState } from "react";
-import { deviceName } from "expo-device";
 import { Link } from "expo-router";
 import { Button, Form, H1, Spinner, Text, XStack, YStack } from "tamagui";
 
@@ -12,10 +11,8 @@ import {
   MySafeAreaView,
   MyStack
 } from "@/components";
-import { useAdaptiveColor, useAsyncStorage, useRequest } from "@/hooks";
+import { useAdaptiveColor, useAsyncStorage, useAuth, useRequest } from "@/hooks";
 import { PRIMARY_COLOR } from "@/lib/constants";
-import axios from "@/plugins/axios";
-import { UserLoginPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";
 
 export default function LoginScreen() {
@@ -29,8 +26,6 @@ export default function LoginScreen() {
     password: false
   });
 
-  const { setItem } = useAsyncStorage();
-  const { post, isLoading } = useRequest();
   const adaptiveColor = useAdaptiveColor("gray", 12);
 
   const handleInputChange = (field: string, value: string) => {
@@ -47,34 +42,12 @@ export default function LoginScreen() {
     }));
   };
 
+  const { login, isLoading } = useAuth();
   const isFormValid = validateBoolObject(validationState) && !isLoading;
 
   const handleLogin = async () => {
     if (!isFormValid) return;
-
-    const loginPayload: UserLoginPayload = {
-      data: {
-        attributes: {
-          email: formData.email,
-          password: formData.password
-        }
-      },
-      meta: {
-        deviceName
-      }
-    };
-
-    try {
-      const response = await post("/login", loginPayload);
-      if (response && response.data) {
-        const token = response.data.token;
-        await setItem("token", token);
-        axios.defaults.headers.Authorization = `Bearer ${token}`;
-        console.log("Logged in: " + token);
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
+    await login(formData.email, formData.password);
   };
 
   return (

@@ -12,7 +12,7 @@ import {
   MySafeAreaView,
   MyStack
 } from "@/components";
-import { useAdaptiveColor, useRequest } from "@/hooks";
+import { useAdaptiveColor, useAuth, useRequest } from "@/hooks";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import { UserRegisterPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";
@@ -45,6 +45,7 @@ function Index() {
   };
 
   const { post, isLoading } = useRequest();
+  const { login } = useAuth();
 
   async function sendData() {
     if (validateBoolObject(valid)) {
@@ -60,7 +61,12 @@ function Index() {
           }
         }
       };
-      await post("/register", data);
+      const res = await post("/register", data);
+      // todo: this should just be if (res.data.message) is no message is sent when a register fails
+      if (res.data.message === "created") {
+        console.log(res.data.message);
+        await login(userData.email, userData.password);
+      }
     }
   }
 

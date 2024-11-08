@@ -8,6 +8,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { TamaguiProvider, Text, Theme } from "tamagui";
 
 import config from "@/../tamagui.config";
+import { Toast } from "@/plugins";
 
 I18nManager.allowRTL(true);
 I18nManager.forceRTL(true);
@@ -33,20 +34,23 @@ export default function Layout() {
 
   // #region ui
   return (
-    <TamaguiProvider config={config}>
-      <Suspense fallback={<Text>Loading...</Text>}>
-        <Theme name={colorScheme === "light" ? "light_accent" : "dark_accent"}>
-          <ThemeProvider value={colorScheme === "light" ? DefaultTheme : DarkTheme}>
-            <Stack
-              screenOptions={{
-                headerShown: false,
-                animation: "slide_from_left",
-                orientation: "portrait"
-              }}
-            />
-          </ThemeProvider>
-        </Theme>
-      </Suspense>
-    </TamaguiProvider>
+    <>
+      <TamaguiProvider config={config}>
+        <Suspense fallback={<Text>Loading...</Text>}>
+          <Theme name={colorScheme === "light" ? "light_accent" : "dark_accent"}>
+            <ThemeProvider value={colorScheme === "light" ? DefaultTheme : DarkTheme}>
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                  animation: "slide_from_left",
+                  orientation: "portrait"
+                }}
+              />
+            </ThemeProvider>
+          </Theme>
+        </Suspense>
+      </TamaguiProvider>
+      <Toast />
+    </>
   );
 }

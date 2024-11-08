@@ -1,5 +1,6 @@
 // #region imports
 import { useState } from "react";
+import Toast from "react-native-toast-message";
 import { Link } from "expo-router";
 import { Button, Form, H1, Spinner, Text, XStack, YStack } from "tamagui";
 
@@ -11,7 +12,7 @@ import {
   MySafeAreaView,
   MyStack
 } from "@/components";
-import { useAdaptiveColor, useAsyncStorage, useAuth, useRequest } from "@/hooks";
+import { useAdaptiveColor, useAuth } from "@/hooks";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import { validateBoolObject } from "@/utils";
 
@@ -47,7 +48,13 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     if (!isFormValid) return;
-    await login(formData.email, formData.password);
+    const res = await login(formData.email, formData.password);
+    if (res.status === 200) {
+      Toast.show({
+        type: "success",
+        text1: "تم تسجيل الدخول"
+      });
+    }
   };
 
   return (

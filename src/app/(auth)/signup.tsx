@@ -62,9 +62,7 @@ function Index() {
         }
       };
       const res = await post("/register", data);
-      // todo: this should just be if (res.data.message) is no message is sent when a register fails
-      if (res.data.message === "created") {
-        console.log(res.data.message);
+      if (res.status === 200) {
         await login(userData.email, userData.password);
       }
     }

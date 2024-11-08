@@ -12,9 +12,7 @@ import {
   MySafeAreaView,
   MyStack
 } from "@/components";
-import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
-import useAsyncStorage from "@/hooks/useAsyncStorage";
-import useRequest from "@/hooks/useRequest";
+import { useAdaptiveColor, useAsyncStorage, useRequest } from "@/hooks";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import axios from "@/plugins/axios";
 import { UserLoginPayload } from "@/types/payload";
@@ -68,9 +66,12 @@ export default function LoginScreen() {
 
     try {
       const response = await post("/login", loginPayload);
-      const token = response.data.token;
-      await setItem("token", token);
-      axios.defaults.headers.Authorization = `Bearer ${token}`;
+      if (response && response.data) {
+        const token = response.data.token;
+        await setItem("token", token);
+        axios.defaults.headers.Authorization = `Bearer ${token}`;
+        console.log("Logged in: " + token);
+      }
     } catch (error) {
       console.error("Login failed:", error);
     }

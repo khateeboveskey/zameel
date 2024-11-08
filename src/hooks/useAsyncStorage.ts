@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-function useAsyncStorage() {
+export function useAsyncStorage() {
   /**
    * Asynchronously stores the provided value under the specified key in the device's AsyncStorage.
    *
@@ -56,5 +56,3 @@ function useAsyncStorage() {
 
   return { setItem, getItem, removeItem };
 }
-
-export default useAsyncStorage;

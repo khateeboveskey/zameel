@@ -12,7 +12,7 @@ import { PayloadData } from "@/types/payload";
  * - `post`: An asynchronous function that sends a POST request to the specified endpoint with the provided data and returns the response.
  * - `delete`: An asynchronous function that sends a DELETE request to the specified endpoint with the provided ID and returns the response data.
  */
-const useRequest = () => {
+export function useRequest() {
   const [isLoading, setIsLoading] = useState(false);
 
   /**
@@ -75,6 +75,4 @@ const useRequest = () => {
   };
 
   return { isLoading, get, post, delete: remove };
-};
-
-export default useRequest;
+}

@@ -12,8 +12,7 @@ import {
   MySafeAreaView,
   MyStack
 } from "@/components";
-import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
-import useRequest from "@/hooks/useRequest";
+import { useAdaptiveColor, useRequest } from "@/hooks";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import { UserRegisterPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";

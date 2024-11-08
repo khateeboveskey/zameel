@@ -31,7 +31,8 @@ export default function FormPasswordChecklist(props) {
     <PasswordValidate
       containerStyle={{
         display: display,
-        opacity: 0.7
+        opacity: 0.7,
+        ...props.style
       }}
       labelStyle={{
         color: colorScheme === "light" ? "black" : "white",

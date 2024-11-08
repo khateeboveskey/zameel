@@ -1,3 +1,4 @@
+// #region imports
 import { useState } from "react";
 import { Link } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
@@ -11,12 +12,12 @@ import {
   MySafeAreaView,
   MyStack
 } from "@/components";
-import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
-import useRequest from "@/hooks/useRequest";
+import { useAdaptiveColor, useAuth, useRequest } from "@/hooks";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import { UserRegisterPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";
 
+// #region logic
 type UserData = {
   fullname: string;
   email: string;
@@ -44,8 +45,9 @@ function Index() {
   };
 
   const { post, isLoading } = useRequest();
+  const { login } = useAuth();
 
-  function sendData() {
+  async function sendData() {
     if (validateBoolObject(valid)) {
       // send data to server
       const data: UserRegisterPayload = {
@@ -59,10 +61,16 @@ function Index() {
           }
         }
       };
-      post("/register", data);
+      const res = await post("/register", data);
+      // todo: this should just be if (res.data.message) is no message is sent when a register fails
+      if (res.data.message === "created") {
+        console.log(res.data.message);
+        await login(userData.email, userData.password);
+      }
     }
   }
 
+  // #region ui
   return (
     <MySafeAreaView>
       <ScrollView>
@@ -183,6 +191,7 @@ function Index() {
   );
 }
 
+// #region WarningMessage
 const WarningMessage = (props) => (
   <XStack
     style={props.style}

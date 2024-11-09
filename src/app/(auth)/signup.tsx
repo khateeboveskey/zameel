@@ -18,7 +18,7 @@ type UserData = {
   passwordConfirm: string;
 };
 
-function Index() {
+function Signup() {
   const [userData, setUserData] = useState<UserData>({
     fullname: "",
     email: "",
@@ -215,4 +215,4 @@ const WarningMessage = (props) => (
   </XStack>
 );
 
-export default Index;
+export default Signup;

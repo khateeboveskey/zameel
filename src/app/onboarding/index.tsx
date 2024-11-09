@@ -1,11 +1,12 @@
 // #region imports
-import React, { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Animated, Dimensions, useColorScheme } from "react-native";
 import { ArrowLeft, ArrowRight, Check } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { Button, Circle, H1, Paragraph, Text, XStack, YStack } from "tamagui";
 
 import { Logo } from "@/components";
+import { useAsyncStorage } from "@/hooks";
 
 // #region logic
 export default function Onboarding() {
@@ -26,6 +27,13 @@ export default function Onboarding() {
   const isDarkMode = colorScheme === "dark";
   const adaptiveColor = isDarkMode ? "white" : "black";
   const isLastPage = currentPage === pages.length - 1;
+
+  useEffect(() => {
+    const setFirstLaunch = async () => {
+      await useAsyncStorage().setItem("isFirstLaunch", "false");
+    };
+    setFirstLaunch();
+  }, []);
 
   // #region ui
   return (

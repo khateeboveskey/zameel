@@ -1,13 +1,20 @@
-import Onboarding from "./onboarding";
+import { useEffect, useState } from "react";
 
-import { MySafeAreaView, MyStack } from "@/components";
+import Signup from "@/app/(auth)/signup";
+import Onboarding from "@/app/onboarding";
+import { useAsyncStorage } from "@/hooks";
 
 export default function Home() {
-  return (
-    <MySafeAreaView direction="rtl">
-      <MyStack>
-        <Onboarding />
-      </MyStack>
-    </MySafeAreaView>
-  );
+  const [showOnboarding, setShowOnboarding] = useState(true);
+  const { getItem } = useAsyncStorage();
+
+  useEffect(() => {
+    const checkFirstLaunch = async () => {
+      const isFirstLaunch = await getItem("isFirstLaunch");
+      setShowOnboarding(isFirstLaunch === "true");
+    };
+    checkFirstLaunch();
+  }, [getItem]);
+
+  return showOnboarding ? <Onboarding /> : <Signup />;
 }

@@ -4,10 +4,24 @@ import { useAsyncStorage, useRequest } from "@/hooks";
 import axios from "@/plugins/axios";
 import { UserLoginPayload } from "@/types/payload";
 
+/**
+ * Provides an authentication hook that handles user login functionality.
+ *
+ * @returns An object with the following properties:
+ *   - `isLoading`: A boolean indicating whether a login request is in progress.
+ *   - `login`: An asynchronous function that takes an email and password, and logs the user in.
+ */
 export function useAuth() {
   const { setItem } = useAsyncStorage();
   const { post, isLoading } = useRequest();
 
+  /**
+   * Logs the user in with the provided email and password.
+   *
+   * @param email - The email address of the user.
+   * @param password - The password of the user.
+   * @returns A Promise that resolves when the login is successful, or rejects with an error if the login fails.
+   */
   const login = async (email: string, password: string) => {
     const loginPayload: UserLoginPayload = {
       data: {

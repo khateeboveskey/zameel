@@ -42,9 +42,13 @@ export function useAuth() {
         await setItem("token", token);
         axios.defaults.headers.Authorization = `Bearer ${token}`;
         console.log("Logged in: " + token);
+        return response;
       }
     } catch (error) {
       console.error("Login failed:", error);
+      if (error.response) {
+        return error.response;
+      }
     }
   };
 

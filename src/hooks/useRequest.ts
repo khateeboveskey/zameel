@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Toast from "react-native-toast-message";
 
 import axios from "@/plugins/axios";
 import { PayloadData } from "@/types/payload";
+import { getArabicStatusCodeMessage } from "@/utils";
 
 /**
  * A custom React hook that provides a set of functions for making HTTP requests.
@@ -15,6 +17,13 @@ import { PayloadData } from "@/types/payload";
 export function useRequest() {
   const [isLoading, setIsLoading] = useState(false);
 
+  const showToast = (statusCode: number) => {
+    Toast.show({
+      type: statusCode === 200 ? "success" : "error",
+      text1: getArabicStatusCodeMessage(statusCode)
+    });
+  };
+
   /**
    * Sends a GET request to the specified endpoint and returns the response data.
    *
@@ -25,10 +34,17 @@ export function useRequest() {
     setIsLoading(true);
     try {
       const res = await axios.get(endpoint);
-      return res.data.data;
+      showToast(res.status);
+      return res.data;
     } catch (error) {
-      console.error(error);
-      return null;
+      console.error(`Error in ${endpoint} GET: ${error}`);
+      if (error.response) {
+        showToast(error.response.status);
+        return error.response;
+      } else {
+        showToast(500);
+        return 500;
+      }
     } finally {
       setIsLoading(false);
     }
@@ -45,10 +61,17 @@ export function useRequest() {
     setIsLoading(true);
     try {
       const res = await axios.post(endpoint, JSON.stringify(data));
+      showToast(res.status);
       return res;
     } catch (error) {
       console.error(`Error in ${endpoint} POST: ${error}`);
-      return null;
+      if (error.response) {
+        showToast(error.response.status);
+        return error.response;
+      } else {
+        showToast(500);
+        return 500;
+      }
     } finally {
       setIsLoading(false);
     }
@@ -65,10 +88,17 @@ export function useRequest() {
     setIsLoading(true);
     try {
       const res = await axios.delete(`${endpoint}/${id}`);
+      showToast(res.status);
       return res.data;
     } catch (error) {
       console.error(`Error in ${endpoint} DELETE: ${error}`);
-      return null;
+      if (error.response) {
+        showToast(error.response.status);
+        return error.response;
+      } else {
+        showToast(500);
+        return 500;
+      }
     } finally {
       setIsLoading(false);
     }

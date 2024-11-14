@@ -1,5 +1,15 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+/**
+ * A custom React hook that provides an interface for interacting with the device's AsyncStorage.
+ *
+ * This hook exposes three functions:
+ * - `setItem`: Asynchronously stores the provided value under the specified key in the device's AsyncStorage.
+ * - `getItem`: Asynchronously retrieves the value stored under the specified key in the device's AsyncStorage.
+ * - `removeItem`: Asynchronously removes the value stored under the specified key in the device's AsyncStorage.
+ *
+ * The hook handles the necessary error handling and JSON encoding/decoding when storing and retrieving objects.
+ */
 export function useAsyncStorage() {
   /**
    * Asynchronously stores the provided value under the specified key in the device's AsyncStorage.

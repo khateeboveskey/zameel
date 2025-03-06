@@ -1,6 +1,6 @@
 // #region imports
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Button, Form, H1, Spinner, Text, XStack, YStack } from "tamagui";
 
 import { FormInput, FormInputFeedback, FormPasswordChecklist, Logo } from "@/components";
@@ -9,6 +9,7 @@ import { PRIMARY_COLOR } from "@/lib/constants";
 import { validateBoolObject } from "@/utils";
 
 export default function LoginScreen() {
+  // #region logic
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -35,17 +36,22 @@ export default function LoginScreen() {
     }));
   };
 
-  const { login, isLoading } = useAuth();
+  const { login, isLoading, logout } = useAuth();
   const isFormValid = validateBoolObject(validationState) && !isLoading;
+
+  const router = useRouter();
 
   const handleLogin = async () => {
     if (!isFormValid) return;
+    await logout();
     const res = await login(formData.email, formData.password);
     if (res.status === 200) {
-      // redirect to group join
+      // todo: redirect to group join only if the user is not in a group
+      router.push("/groups");
     }
   };
 
+  // #region UI
   return (
     <YStack
       p="$3"

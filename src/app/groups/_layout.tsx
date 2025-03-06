@@ -8,11 +8,12 @@ export default function Index() {
     <YStack
       jc="center"
       gap="$3"
-      // mx="auto"
-      w="100%"
-      maxWidth={"600px"}
+      pt="$8"
+      mx="auto"
+      w="95%"
+      // maxWidth={"600px"}
       direction="rtl">
-      <Logo style={{ height: 100 }} />
+      <Logo style={{ height: 50 }} />
       <Slot />
     </YStack>
   );

@@ -7,7 +7,7 @@ const { getItem } = useAsyncStorage();
 const token = getItem("token") ?? "";
 
 const instance = axios.create({
-  baseURL: "http://192.168.1.101:8000/api",
+  baseURL: "http://192.168.1.102:8000/api",
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

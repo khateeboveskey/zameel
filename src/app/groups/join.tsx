@@ -6,6 +6,9 @@ import { useAdaptiveColor } from "@/hooks";
 
 export default function join() {
   const [val, setVal] = useState(null);
+  const neutralColor = useAdaptiveColor("neutral", 200, true);
+  const neutralBorderColor = useAdaptiveColor("neutral", 700, true);
+  const neutralBgColor = useAdaptiveColor("neutral", 800, true);
 
   return (
     <Form w="100%">
@@ -17,7 +20,7 @@ export default function join() {
         defaultValue={val}>
         <Select.Trigger
           themeReset
-          iconAfter={<ChevronDown color={useAdaptiveColor("neutral", 200, true)} />}>
+          iconAfter={<ChevronDown color={neutralColor} />}>
           <Select.Value placeholder={"قم باختيار الكلية"}>{val}</Select.Value>
         </Select.Trigger>
 
@@ -25,7 +28,6 @@ export default function join() {
           when="sm"
           platform="touch">
           <Sheet
-            // native={!!props.native}
             modal
             dismissOnSnapToBottom>
             <Sheet.Frame>
@@ -43,16 +45,12 @@ export default function join() {
 
         <Select.Content>
           <Select.ScrollUpButton />
-          <Select.Viewport style={{ borderColor: useAdaptiveColor("neutral", 700, true) }}>
+          <Select.Viewport style={{ borderColor: neutralBorderColor }}>
             {colleges.map((college, index) => (
               <Select.Item
                 style={{
-                  background: useAdaptiveColor("neutral", 800, true)
+                  background: neutralBgColor
                 }}
-                // fixme: this is not working
-                // hoverStyle={{
-                //   backgroundColor: useAdaptiveColor("neutral", 700, true)
-                // }}
                 key={college}
                 value={college}
                 index={index}>

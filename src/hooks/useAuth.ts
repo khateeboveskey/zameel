@@ -52,5 +52,12 @@ export function useAuth() {
     }
   };
 
-  return { isLoading, login };
+  const logout = async () => {
+    await post("/logout");
+    await setItem("token", "");
+    axios.defaults.headers.Authorization = "";
+    console.log("Logged Out");
+  };
+
+  return { isLoading, login, logout };
 }

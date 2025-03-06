@@ -10,14 +10,14 @@ export default function Index() {
       <Image
         source={require("@/assets/imgs/3d-icons/plus-dynamic-color.png")}
         mx="auto"
-        h={280}
-        w={280}
+        h={200}
+        w={200}
       />
       <H1
         py="$2"
         h={"$6"}
         color={useAdaptiveColor("gray", 12)}
-        textAlign="center">
+        mx="auto">
         قائمة الدُفَع
       </H1>
       <Paragraph
@@ -26,9 +26,9 @@ export default function Index() {
         fontSize={"$2"}
         textAlign="center"
         color={useAdaptiveColor("neutral", 500, true)}
-        w={"90%"}>
+        mx="auto">
         قم بإضافة دفعة لإرسال طلب انضمام لمندوبها
-      </Paragraph>
+      </Paragraph>{" "}
       {groups.map((group) => (
         <XStack
           key={group}

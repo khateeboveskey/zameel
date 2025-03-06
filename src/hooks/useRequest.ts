@@ -57,10 +57,12 @@ export function useRequest() {
    * @param data - The data to be sent in the POST request.
    * @returns The response object, or `null` if an error occurs.
    */
-  const post = async (endpoint: string, data: PayloadData) => {
+  const post = async (endpoint: string, data?: PayloadData) => {
     setIsLoading(true);
     try {
-      const res = await axios.post(endpoint, JSON.stringify(data));
+      const res = data
+        ? await axios.post(endpoint, JSON.stringify(data))
+        : await axios.post(endpoint);
       showToast(res.status);
       return res;
     } catch (error) {

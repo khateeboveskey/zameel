@@ -1,6 +1,6 @@
 // #region imports
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { CircleAlert } from "lucide-react-native";
 import { Button, Form, H1, Paragraph, ScrollView, Spinner, Text, XStack, YStack } from "tamagui";
 
@@ -40,6 +40,8 @@ function Signup() {
   const { post, isLoading } = useRequest();
   const { login } = useAuth();
 
+  const router = useRouter();
+
   async function sendData() {
     if (validateBoolObject(valid)) {
       // send data to server
@@ -56,7 +58,11 @@ function Signup() {
       };
       const res = await post("/register", data);
       if (res.status === 200) {
-        await login(userData.email, userData.password);
+        const res = await login(userData.email, userData.password);
+        if (res.status === 200) {
+          // redirect to group join
+          router.push("/groups");
+        }
       }
     }
   }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react-native";
 import { Adapt, Form, Label, Select, Sheet } from "tamagui";
 
-import { useAdaptiveColor } from "@/hooks";
+import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 
 export default function join() {
   const [val, setVal] = useState(null);

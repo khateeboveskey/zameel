@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useAsyncStorage } from "@/hooks";
+import { useAsyncStorage } from "@/hooks/useAsyncStorage";
 
 const { getItem } = useAsyncStorage();
 

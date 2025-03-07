@@ -1,5 +1,5 @@
 import { TAILWIND_COLORS as tw } from "@/lib/constants";
-import { capitalize } from "@/utils";
+import { capitalize } from "@/utils/string";
 
 /**
  * Generates an adaptive color string based on the current color scheme.

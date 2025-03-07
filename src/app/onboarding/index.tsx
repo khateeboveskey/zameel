@@ -6,7 +6,7 @@ import { Link } from "expo-router";
 import { Button, Circle, H1, Paragraph, Text, XStack, YStack } from "tamagui";
 
 import { Logo } from "@/components";
-import { useAsyncStorage } from "@/hooks";
+import { useAsyncStorage } from "@/hooks/useAsyncStorage";
 
 // #region logic
 export default function Onboarding() {

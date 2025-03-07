@@ -4,7 +4,8 @@ import { Link, useRouter } from "expo-router";
 import { Button, Form, H1, Spinner, Text, XStack, YStack } from "tamagui";
 
 import { FormInput, FormInputFeedback, FormPasswordChecklist, Logo } from "@/components";
-import { useAdaptiveColor, useAuth } from "@/hooks";
+import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import { useAuth } from "@/hooks/useAuth";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import { validateBoolObject } from "@/utils";
 

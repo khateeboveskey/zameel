@@ -5,7 +5,9 @@ import { CircleAlert } from "lucide-react-native";
 import { Button, Form, H1, Paragraph, ScrollView, Spinner, Text, XStack, YStack } from "tamagui";
 
 import { FormInput, FormInputFeedback, FormPasswordChecklist, Logo } from "@/components";
-import { useAdaptiveColor, useAuth, useRequest } from "@/hooks";
+import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import { useAuth } from "@/hooks/useAuth";
+import { useRequest } from "@/hooks/useRequest";
 import { PRIMARY_COLOR } from "@/lib/constants";
 import { UserRegisterPayload } from "@/types/payload";
 import { validateBoolObject } from "@/utils";

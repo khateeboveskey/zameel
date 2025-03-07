@@ -2,7 +2,7 @@
 import RNToast, { ErrorToast, InfoToast, SuccessToast } from "react-native-toast-message";
 import { CircleCheck, CircleX, Info, Square } from "lucide-react-native";
 
-import { useAdaptiveColor } from "@/hooks";
+import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 
 export function Toast() {
   const commonStyles = {

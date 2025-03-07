@@ -1,6 +1,7 @@
 import { deviceName } from "expo-device";
 
-import { useAsyncStorage, useRequest } from "@/hooks";
+import { useAsyncStorage } from "@/hooks/useAsyncStorage";
+import { useRequest } from "@/hooks/useRequest";
 import axios from "@/plugins/axios";
 import { UserLoginPayload } from "@/types/payload";
 

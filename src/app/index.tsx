@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import Signup from "@/app/(auth)/signup";
 import Onboarding from "@/app/onboarding";
-import { useAsyncStorage } from "@/hooks";
+import { useAsyncStorage } from "@/hooks/useAsyncStorage";
 
 export default function Home() {
   const [showOnboarding, setShowOnboarding] = useState(true);

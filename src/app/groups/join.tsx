@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react-native";
+import { ChevronDown } from "@tamagui/lucide-icons";
 import { Adapt, Form, Label, Select, Sheet } from "tamagui";
 
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 
-export default function join() {
+export default function Join() {
   const [val, setVal] = useState(null);
   const neutralColor = useAdaptiveColor("neutral", 200, true);
   const neutralBorderColor = useAdaptiveColor("neutral", 700, true);
@@ -19,8 +19,13 @@ export default function join() {
         onValueChange={setVal}
         defaultValue={val}>
         <Select.Trigger
-          themeReset
-          iconAfter={<ChevronDown color={neutralColor} />}>
+          style={{ backgroundColor: neutralBgColor, borderColor: neutralBorderColor }}
+          iconAfter={
+            <ChevronDown
+              size={24}
+              color={neutralColor}
+            />
+          }>
           <Select.Value placeholder={"قم باختيار الكلية"}>{val}</Select.Value>
         </Select.Trigger>
 
@@ -28,9 +33,14 @@ export default function join() {
           when="sm"
           platform="touch">
           <Sheet
+            snapPoints={[6 * colleges.length]}
             modal
             dismissOnSnapToBottom>
-            <Sheet.Frame>
+            <Sheet.Frame
+              style={{
+                backgroundColor: neutralBgColor,
+                borderColor: neutralBorderColor
+              }}>
               <Sheet.ScrollView>
                 <Adapt.Contents />
               </Sheet.ScrollView>
@@ -45,12 +55,10 @@ export default function join() {
 
         <Select.Content>
           <Select.ScrollUpButton />
-          <Select.Viewport style={{ borderColor: neutralBorderColor }}>
+          <Select.Viewport>
             {colleges.map((college, index) => (
               <Select.Item
-                style={{
-                  background: neutralBgColor
-                }}
+                style={{ backgroundColor: neutralBgColor, borderColor: neutralBorderColor }}
                 key={college}
                 value={college}
                 index={index}>

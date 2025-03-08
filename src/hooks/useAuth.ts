@@ -13,7 +13,7 @@ import { UserLoginPayload } from "@/types/payload";
  *   - `login`: An asynchronous function that takes an email and password, and logs the user in.
  */
 export function useAuth() {
-  const { setItem } = useAsyncStorage();
+  const { setItem, removeItem } = useAsyncStorage();
   const { post, isLoading } = useRequest();
 
   /**
@@ -55,7 +55,7 @@ export function useAuth() {
 
   const logout = async () => {
     await post("/logout");
-    await setItem("token", "");
+    await removeItem("token");
     axios.defaults.headers.Authorization = "";
     console.log("Logged Out");
   };

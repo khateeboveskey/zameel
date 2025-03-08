@@ -30,19 +30,28 @@ export function useRequest() {
    * @param endpoint - The URL endpoint to send the GET request to.
    * @returns The response data, or `null` if an error occurs.
    */
-  const get = async (endpoint: string) => {
+  const get = async (endpoint: string, showFeedback = true) => {
     setIsLoading(true);
     try {
       const res = await axios.get(endpoint);
-      showToast(res.status);
+      if (showFeedback) {
+        showToast(res.status);
+      }
+
       return res.data;
     } catch (error) {
       console.error(`Error in ${endpoint} GET: ${error}`);
       if (error.response) {
-        showToast(error.response.status);
+        if (showFeedback) {
+          showToast(error.response.status);
+        }
+
         return error.response;
       } else {
-        showToast(500);
+        if (showFeedback) {
+          showToast(500);
+        }
+
         return 500;
       }
     } finally {
@@ -57,21 +66,30 @@ export function useRequest() {
    * @param data - The data to be sent in the POST request.
    * @returns The response object, or `null` if an error occurs.
    */
-  const post = async (endpoint: string, data?: PayloadData) => {
+  const post = async (endpoint: string, data?: PayloadData, showFeedback = true) => {
     setIsLoading(true);
     try {
       const res = data
         ? await axios.post(endpoint, JSON.stringify(data))
         : await axios.post(endpoint);
-      showToast(res.status);
+      if (showFeedback) {
+        showToast(res.status);
+      }
+
       return res;
     } catch (error) {
       console.error(`Error in ${endpoint} POST: ${error}`);
       if (error.response) {
-        showToast(error.response.status);
+        if (showFeedback) {
+          showToast(error.response.status);
+        }
+
         return error.response;
       } else {
-        showToast(500);
+        if (showFeedback) {
+          showToast(500);
+        }
+
         return 500;
       }
     } finally {
@@ -86,19 +104,25 @@ export function useRequest() {
    * @param id - The ID of the resource to be deleted.
    * @returns The response data, or `null` if an error occurs.
    */
-  const remove = async (endpoint: string, id: number) => {
+  const remove = async (endpoint: string, id: number, showFeedback = true) => {
     setIsLoading(true);
     try {
       const res = await axios.delete(`${endpoint}/${id}`);
-      showToast(res.status);
+      if (showFeedback) {
+        showToast(res.status);
+      }
       return res.data;
     } catch (error) {
       console.error(`Error in ${endpoint} DELETE: ${error}`);
       if (error.response) {
-        showToast(error.response.status);
+        if (showFeedback) {
+          showToast(error.response.status);
+        }
         return error.response;
       } else {
-        showToast(500);
+        if (showFeedback) {
+          showToast(500);
+        }
         return 500;
       }
     } finally {

@@ -1,23 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown } from "@tamagui/lucide-icons";
-import { Adapt, Form, Label, Select, Sheet } from "tamagui";
+import { Adapt, Form, Label, Select, Sheet, Spinner } from "tamagui";
 
 import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
+import { useRequest } from "@/hooks/useRequest";
 
 export default function Join() {
   const [val, setVal] = useState(null);
+  const [colleges, setColleges] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const neutralColor = useAdaptiveColor("neutral", 200, true);
   const neutralBorderColor = useAdaptiveColor("neutral", 700, true);
   const neutralBgColor = useAdaptiveColor("neutral", 800, true);
 
+  const { get } = useRequest();
+
+  useEffect(() => {
+    if (drawerOpen) {
+      const fetchColleges = async () => {
+        setLoading(true);
+        const res = await get("/colleges", false);
+        if (res) setColleges(res.data);
+        setLoading(false);
+      };
+      fetchColleges();
+    }
+  }, [drawerOpen]);
+
   return (
-    <Form w="100%">
+    <Form
+      w="95%"
+      mx="auto">
       <Label htmlFor="college-select">الكلية</Label>
       <Select
         id="college-select"
         value={val}
         onValueChange={setVal}
-        defaultValue={val}>
+        defaultValue={val}
+        onOpenChange={setDrawerOpen}>
         <Select.Trigger
           style={{ backgroundColor: neutralBgColor, borderColor: neutralBorderColor }}
           iconAfter={
@@ -39,10 +60,23 @@ export default function Join() {
             <Sheet.Frame
               style={{
                 backgroundColor: neutralBgColor,
-                borderColor: neutralBorderColor
+                borderColor: neutralBorderColor,
+                zIndex: 1000
               }}>
-              <Sheet.ScrollView>
-                <Adapt.Contents />
+              <Sheet.ScrollView
+                contentContainerStyle={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}>
+                {loading ? (
+                  <Spinner
+                    color={neutralColor}
+                    size="large"
+                  />
+                ) : (
+                  <Adapt.Contents />
+                )}
               </Sheet.ScrollView>
             </Sheet.Frame>
             <Sheet.Overlay
@@ -59,10 +93,10 @@ export default function Join() {
             {colleges.map((college, index) => (
               <Select.Item
                 style={{ backgroundColor: neutralBgColor, borderColor: neutralBorderColor }}
-                key={college}
-                value={college}
+                key={college.id}
+                value={college.name}
                 index={index}>
-                {college}
+                {college.name}
               </Select.Item>
             ))}
           </Select.Viewport>
@@ -72,5 +106,3 @@ export default function Join() {
     </Form>
   );
 }
-
-const colleges = ["الهندسة والحاسبات", "العلوم الإدارية والإنسانية", "الطب والعلوم الصحية"];

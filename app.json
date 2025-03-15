@@ -4,7 +4,7 @@
     "description": "زميل هو نظام إدارة محتوى الطالب",
     "slug": "zameel",
     "scheme": "zameel",
-    "owner": "Bitwise",
+    "owner": "khateeb404",
     "githubUrl": "https://github.com/khateeboveskey/zameel",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
@@ -36,6 +36,7 @@
     },
     "android": {
       "package": "com.bitwise.zameel"
-    }
+    },
+    "newArchEnabled": true
   }
 }

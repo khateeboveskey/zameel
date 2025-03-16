@@ -48,7 +48,8 @@ export default function LoginScreen() {
     const res = await login(formData.email, formData.password);
     if (res.status === 200) {
       // todo: redirect to group join only if the user is not in a group
-      router.push("/groups");
+      // router.push("/groups");
+      router.push("/(tabs)");
     }
   };
 

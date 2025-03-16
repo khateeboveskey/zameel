@@ -75,10 +75,6 @@ export default function Select({
                 style={{
                   background: useAdaptiveColor("neutral", 800, true)
                 }}
-                // fixme: this is not working
-                // hoverStyle={{
-                //   backgroundColor: useAdaptiveColor("neutral", 700, true)
-                // }}
                 key={item}
                 value={item}
                 index={index}>

@@ -1,25 +1,26 @@
 import { useState } from "react";
-import { ScrollView } from "tamagui";
+import { ScrollView, YStack } from "tamagui";
 
-import { FormInput, Logo } from "@/components";
+import { FormInput, Logo, PostCard } from "@/components";
 
 export default function TabHome() {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <ScrollView padding="$4">
+    <ScrollView paddingVertical="$4">
       <Logo
         style={{
           margin: "auto"
         }}
-        width={"30%"}
+        width={"25%"}
       />
       <FormInput
         noValidate
         id="search"
         label=""
         style={{
-          marginTop: 20
+          marginVertical: 20,
+          marginHorizontal: 18
         }}
         onChangeText={(text) => {
           setSearchTerm(text);
@@ -27,6 +28,57 @@ export default function TabHome() {
         placeholder="ابحث..."
         value={searchTerm}
       />
+      <YStack gap={"$3"}>
+        {posts.map((post, index) => (
+          <PostCard
+            id={index}
+            publisherName={post.publisherName}
+            role={post.role}
+            subject={post.subject}
+            datetime={post.datetime}
+            content={post.content}
+            key={index}
+          />
+        ))}
+      </YStack>
     </ScrollView>
   );
 }
+
+const posts = [
+  {
+    publisherName: "علي أحمد",
+    role: "مندوب",
+    subject: "تطوير الويب",
+    datetime: "5 يوليو - 3:00 م",
+    content: "تم تسليم مشروع تطوير الويب"
+  },
+  {
+    publisherName: "سارة محمد",
+    role: "مندوب",
+    subject: "تصميم الجرافيك",
+    datetime: "6 يوليو - 1:00 م",
+    content: "تم الانتهاء من تصميم الشعار"
+  },
+  {
+    publisherName: "قسم التسويق",
+    role: "إداري",
+    subject: "كلية الهندسة والحاسبات",
+    datetime: "7 يوليو - 11:00 ص",
+    content: "تم إضافة قسم الذكاء الاصطناعي في كلية الهندسة والحاسبات."
+  },
+  {
+    publisherName: "فاطمة علي",
+    role: "مندوب",
+    subject: "إدارة المشاريع",
+    datetime: "8 يوليو - 2:00 م",
+    content: "تمت مراجعة خطة المشروع"
+  },
+  {
+    publisherName: "فاطمة علي",
+    role: "مندوب",
+    subject: "إدارة المشاريع",
+    datetime: "8 يوليو - 2:00 م",
+    content: "تمت مراجعة خطة المشروع"
+  }
+];

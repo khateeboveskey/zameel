@@ -80,3 +80,12 @@ export declare type LogoProps = {
    */
   color?: string;
 };
+
+export declare type PostCardProps = {
+  id: number;
+  publisherName: string;
+  role: "مندوب" | "إداري" | "أكاديمي";
+  subject: string;
+  datetime: string;
+  content: string;
+};

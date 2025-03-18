@@ -5,7 +5,7 @@ import { useAdaptiveColor } from "@/hooks/useAdaptiveColor";
 import type { FormInputProps } from "@/lib/types";
 
 const FormInput = (props: FormInputProps) => {
-  const grayColor = useAdaptiveColor("gray", 8);
+  const grayColor = useAdaptiveColor("gray", 5);
   const [borderColor, setBorderColor] = useState(grayColor);
 
   useEffect(() => {
@@ -22,12 +22,14 @@ const FormInput = (props: FormInputProps) => {
 
   return (
     <>
-      <Label
-        mt={"$3"}
-        color={useAdaptiveColor("gray", 12)}
-        htmlFor={props.id}>
-        {props.label}
-      </Label>
+      {props.label && (
+        <Label
+          mt={"$3"}
+          color={useAdaptiveColor("gray", 12)}
+          htmlFor={props.id}>
+          {props.label}
+        </Label>
+      )}
       <Input
         id={props.id}
         value={props.value}
@@ -36,8 +38,9 @@ const FormInput = (props: FormInputProps) => {
         focusStyle={{
           borderColor: props.value && !props.noValidate ? borderColor : "$borderColorFocus"
         }}
+        style={props.style}
         color={useAdaptiveColor("gray", 12)}
-        backgroundColor={useAdaptiveColor("gray", 5)}
+        backgroundColor={useAdaptiveColor("gray", 2)}
         placeholderTextColor={grayColor}
         placeholder={props.placeholder}
         onChangeText={(text: string) => handleChange(text)}

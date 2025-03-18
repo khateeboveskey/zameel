@@ -18,7 +18,7 @@ export declare type FormInputProps = {
   /**
    * The label for the form input.
    */
-  label: string;
+  label?: string;
   /**
    * The current value of the form input.
    */
@@ -44,6 +44,7 @@ export declare type FormInputProps = {
    * Indicates whether the form input should not be validated.
    */
   noValidate?: boolean;
+  style?: object;
 };
 
 /**

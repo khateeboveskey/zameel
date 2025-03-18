@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { ScrollView, YStack } from "tamagui";
 
-import { FormInput, Logo, PostCard } from "@/components";
+import { FormInput, Logo, PostCard, SeperatingText } from "@/components";
 
 export default function TabHome() {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <ScrollView paddingVertical="$4">
+    <ScrollView paddingTop="$4">
       <Logo
         style={{
           margin: "auto"
@@ -28,7 +28,9 @@ export default function TabHome() {
         placeholder="ابحث..."
         value={searchTerm}
       />
-      <YStack gap={"$3"}>
+      <YStack
+        marginBottom="$10"
+        gap={"$3"}>
         {posts.map((post, index) => (
           <PostCard
             id={index}
@@ -40,6 +42,7 @@ export default function TabHome() {
             key={index}
           />
         ))}
+        <SeperatingText>لقد وصلت لنهاية المحتوى</SeperatingText>
       </YStack>
     </ScrollView>
   );

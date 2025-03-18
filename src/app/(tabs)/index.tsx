@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ScrollView, YStack } from "tamagui";
 
 import { FormInput, Logo, PostCard, SeperatingText } from "@/components";
+import HomeCarousel from "@/components/HomeCarousel";
 
 export default function TabHome() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,6 +29,7 @@ export default function TabHome() {
         placeholder="ابحث..."
         value={searchTerm}
       />
+      <HomeCarousel />
       <YStack
         marginBottom="$10"
         gap={"$3"}>

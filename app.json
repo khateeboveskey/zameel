@@ -35,7 +35,8 @@
       }
     },
     "android": {
-      "package": "com.bitwise.zameel"
+      "package": "com.bitwise.zameel",
+      "softwareKeyboardLayoutMode": "pan"
     },
     "newArchEnabled": true
   }

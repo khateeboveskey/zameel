@@ -1,6 +1,6 @@
 // #region imports
 import { Suspense, useEffect } from "react";
-import { I18nManager, useColorScheme } from "react-native";
+import { I18nManager, useColorScheme, Platform, KeyboardAvoidingView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -47,15 +47,20 @@ export default function Layout() {
                   flex: 1,
                   backgroundColor: String(theme.colors.background)
                 }}>
-                <YStack flex={1}>
-                  <Stack
-                    screenOptions={{
-                      headerShown: false,
-                      animation: "slide_from_left",
-                      orientation: "portrait"
-                    }}
-                  />
-                </YStack>
+                <KeyboardAvoidingView
+                  style={{ flex: 1 }}
+                  behavior={Platform.OS === "ios" ? "padding" : "height"}
+                >
+                  <YStack flex={1}>
+                    <Stack
+                      screenOptions={{
+                        headerShown: false,
+                        animation: "slide_from_left",
+                        orientation: "portrait"
+                      }}
+                    />
+                  </YStack>
+                </KeyboardAvoidingView>
               </SafeAreaView>
             </ThemeProvider>
           </Theme>

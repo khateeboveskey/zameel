@@ -35,9 +35,16 @@ export default function FormPasswordChecklist(props) {
         ...props.style
       }}
       labelStyle={{
-        color: colorScheme === "light" ? "black" : "white",
-        fontFamily: "Alexandria",
-        fontSize: 11
+        success: {
+          color: colorScheme === "light" ? "black" : "white",
+          fontFamily: "Alexandria",
+          fontSize: 11
+        },
+        error: {
+          color: colorScheme === "light" ? "black" : "white",
+          fontFamily: "Alexandria",
+          fontSize: 11
+        }
       }}
       newPassword={props.value}
       confirmPassword={props.passwordConfirm}
@@ -69,8 +76,7 @@ export default function FormPasswordChecklist(props) {
         }
       ]}
       onPasswordValidateChange={debounce(onPasswordValidateChange)}
-      iconSuccessSource={require("@/assets/check.png")}
-      iconErrorSource={require("@/assets/x.png")}
+      imageSource={{ success: require("@/assets/check.png"), error: require("@/assets/x.png") }}
     />
   );
 }
